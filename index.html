@@ -74,10 +74,14 @@
     }
 
     .nav-logo-mark {
-      width: 28px; height: 28px;
-      background: var(--accent);
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      width: 32px; height: 32px;
       display: flex; align-items: center; justify-content: center;
+    }
+
+    .nav-logo-mark img {
+      width: 32px; height: 32px;
+      object-fit: contain;
+      filter: brightness(10);
     }
 
     .nav-links {
@@ -688,14 +692,14 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <div class="nav-logo-mark"></div>
+    <div class="nav-logo-mark"><img src="/logo.jpg" alt="Nexus Trading Labs" /></div>
     Nexus Trading Labs
   </a>
   <ul class="nav-links">
     <li><a href="#markets">Markets</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="https://trade.nexustradinglabs.com">Trade</a></li>
-    <li><a href="#">Docs</a></li>
+    <li><a href="#docs">Docs</a></li>
   </ul>
   <a href="https://trade.nexustradinglabs.com" class="nav-cta">Launch App</a>
 </nav>
@@ -898,6 +902,62 @@
   </table>
 </div>
 
+<!-- DOCS SECTION -->
+<section class="section" id="docs" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section-label">Documentation</div>
+  <h2 class="section-title">Everything you need to get started.</h2>
+  <div class="features-grid" style="grid-template-columns: repeat(3,1fr);">
+    <div class="feature-card">
+      <div class="feature-icon">◎</div>
+      <div class="feature-title">Getting Started</div>
+      <p class="feature-desc">Connect your wallet, deposit USDC, and place your first trade in under 2 minutes. Supports MetaMask, WalletConnect, Privy and more.</p>
+      <div style="margin-top:20px;">
+        <a href="https://trade.nexustradinglabs.com" style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Launch App →</a>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">◈</div>
+      <div class="feature-title">Trading Guide</div>
+      <p class="feature-desc">Learn how to open and manage perpetual positions, set leverage, use limit orders, and read funding rates on Nexus Trading Labs.</p>
+      <div style="margin-top:20px;">
+        <a href="https://orderly.network/docs" target="_blank" style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Orderly Docs →</a>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⬡</div>
+      <div class="feature-title">Vaults & Yield</div>
+      <p class="feature-desc">Deposit USDC into the platform vault to earn yield from trading fees. Fully non-custodial and on-chain on Arbitrum.</p>
+      <div style="margin-top:20px;">
+        <a href="https://trade.nexustradinglabs.com" style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">View Vaults →</a>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">◉</div>
+      <div class="feature-title">Security</div>
+      <p class="feature-desc">Nexus Trading Labs is fully non-custodial. Funds are secured by smart contracts on Arbitrum. Powered by Orderly Network's battle-tested infrastructure.</p>
+      <div style="margin-top:20px;">
+        <a href="https://orderly.network/docs" target="_blank" style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Learn More →</a>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Fees & Funding</div>
+      <p class="feature-desc">Competitive maker/taker fees with 8-hour funding rate settlements. No hidden costs — all fee structures are transparent and on-chain.</p>
+      <div style="margin-top:20px;">
+        <a href="https://trade.nexustradinglabs.com" style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">View Markets →</a>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">◆</div>
+      <div class="feature-title">Community</div>
+      <p class="feature-desc">Follow us on X for platform updates, trading competitions, and yield opportunities. Built in public from Denver, CO.</p>
+      <div style="margin-top:20px;">
+        <a href="https://twitter.com/borst_eth" target="_blank" style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Follow @borst_eth →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <div class="cta-section">
   <div>
@@ -916,9 +976,9 @@
   </div>
   <ul class="footer-links">
     <li><a href="https://trade.nexustradinglabs.com">Trade</a></li>
-    <li><a href="https://twitter.com/NexusTradingLabs">Twitter</a></li>
+    <li><a href="https://twitter.com/borst_eth">Twitter</a></li>
     <li><a href="https://farcaster.xyz/borst.eth">Farcaster</a></li>
-    <li><a href="#">Docs</a></li>
+    <li><a href="#docs">Docs</a></li>
   </ul>
   <div class="footer-badge">Operational</div>
 </footer>
