@@ -753,11 +753,11 @@
       <div class="stats-grid">
         <div class="stat-cell">
           <div class="stat-label">24h Volume</div>
-          <div class="stat-value">$20.2<span>M</span></div>
+          <div class="stat-value" id="stat-volume">$20.2<span>M</span></div>
         </div>
         <div class="stat-cell">
           <div class="stat-label">Open Interest</div>
-          <div class="stat-value">$9.6<span>M</span></div>
+          <div class="stat-value" id="stat-oi">$9.6<span>M</span></div>
         </div>
         <div class="stat-cell">
           <div class="stat-label">TVL</div>
@@ -765,39 +765,11 @@
         </div>
         <div class="stat-cell">
           <div class="stat-label">Markets</div>
-          <div class="stat-value">50<span>+</span></div>
+          <div class="stat-value" id="stat-markets">50<span>+</span></div>
         </div>
       </div>
-      <div class="stats-markets">
-        <div class="market-row">
-          <span class="market-name">BTC-PERP</span>
-          <span class="market-lev">100x</span>
-          <span class="market-change-up">+0.15%</span>
-        </div>
-        <div class="market-row">
-          <span class="market-name">ETH-PERP</span>
-          <span class="market-lev">100x</span>
-          <span class="market-change-up">+0.44%</span>
-        </div>
-        <div class="market-row">
-          <span class="market-name">SOL-PERP</span>
-          <span class="market-lev">100x</span>
-          <span class="market-change-up">+0.93%</span>
-        </div>
-        <div class="market-row">
-          <span class="market-name">ETHFI-PERP</span>
-          <span class="market-lev">20x</span>
-          <span class="market-change-up">+15.00%</span>
-        </div>
-        <div class="market-row">
-          <span class="market-name">XAG-PERP</span>
-          <span class="market-lev">20x</span>
-          <span class="market-change-down">-6.87%</span>
-        </div>
+      <div class="stats-markets" id="hero-markets">
       </div>
-    </div>
-  </div>
-</section>
 
 <!-- FEATURES -->
 <section class="section" id="features">
@@ -856,47 +828,7 @@
         <th>8h Funding</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td><div class="td-sym"><div class="sym-dot"></div>BTC-PERP</div></td>
-        <td class="td-lev">100×</td>
-        <td class="td-muted">$7,364,186</td>
-        <td class="td-muted">$2,928,364</td>
-        <td class="td-up">+0.15%</td>
-        <td class="td-down">-0.0111%</td>
-      </tr>
-      <tr>
-        <td><div class="td-sym"><div class="sym-dot"></div>ETH-PERP</div></td>
-        <td class="td-lev">100×</td>
-        <td class="td-muted">$3,583,806</td>
-        <td class="td-muted">$1,679,265</td>
-        <td class="td-up">+0.44%</td>
-        <td class="td-up">+0.0010%</td>
-      </tr>
-      <tr>
-        <td><div class="td-sym"><div class="sym-dot"></div>SOL-PERP</div></td>
-        <td class="td-lev">100×</td>
-        <td class="td-muted">$2,200,313</td>
-        <td class="td-muted">$789,505</td>
-        <td class="td-up">+0.93%</td>
-        <td class="td-down">-0.0167%</td>
-      </tr>
-      <tr>
-        <td><div class="td-sym"><div class="sym-dot" style="background:#aaa"></div>XAG-PERP</div></td>
-        <td class="td-lev">20×</td>
-        <td class="td-muted">$2,013,751</td>
-        <td class="td-muted">$437,395</td>
-        <td class="td-down">-6.87%</td>
-        <td class="td-up">+0.0025%</td>
-      </tr>
-      <tr>
-        <td><div class="td-sym"><div class="sym-dot" style="background:#60a5fa"></div>SPX500-PERP</div></td>
-        <td class="td-lev">20×</td>
-        <td class="td-muted">$637,042</td>
-        <td class="td-muted">$384,627</td>
-        <td class="td-up">+0.69%</td>
-        <td class="td-up">+0.0100%</td>
-      </tr>
+    <tbody id="markets-tbody">
     </tbody>
   </table>
 </div>
@@ -982,5 +914,131 @@
   <div class="footer-badge">Operational</div>
 </footer>
 
+<script>
+  const ORDERLY_API = 'https://orderly-proxy.stephenpatrick24.workers.dev';
+
+  const fmt = (n, decimals = 2) => {
+    if (n === undefined || n === null) return '—';
+    return Number(n).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  };
+
+  const fmtM = (n) => {
+    if (!n) return '—';
+    const m = n / 1e6;
+    return m >= 1 ? `$${m.toFixed(1)}<span>M</span>` : `$${(n/1e3).toFixed(0)}<span>K</span>`;
+  };
+
+  const fmtPrice = (n) => {
+    if (!n) return '—';
+    if (n >= 1000) return '$' + fmt(n, 0);
+    if (n >= 1) return '$' + fmt(n, 2);
+    return '$' + Number(n).toPrecision(4);
+  };
+
+  const fmtPct = (n) => {
+    if (n === undefined || n === null) return '—';
+    const sign = n >= 0 ? '+' : '';
+    return `${sign}${fmt(n, 2)}%`;
+  };
+
+  // Markets to show in ticker + hero panel + table
+  const FEATURED = ['PERP_BTC_USDC','PERP_ETH_USDC','PERP_SOL_USDC','PERP_XAG_USDC','PERP_SPX500_USDC','PERP_ETHFI_USDC','PERP_MYX_USDC','PERP_WLD_USDC','PERP_NVDA_USDC','PERP_TSLA_USDC'];
+
+  async function fetchMarkets() {
+    try {
+      const res = await fetch(ORDERLY_API);
+      const json = await res.json();
+      return json.data?.rows || [];
+    } catch(e) {
+      console.warn('Orderly API error:', e);
+      return [];
+    }
+  }
+
+  function updateTicker(markets) {
+    const track = document.getElementById('ticker');
+    if (!track || !markets.length) return;
+
+    const items = markets.map(m => {
+      const sym = m.symbol.replace('PERP_','').replace('_USDC','/USDC');
+      const open = m['24h_open'] || 0; const close = m['24h_close'] || m.mark_price || 0; const change = open ? ((close - open) / open) * 100 : 0;
+      const cls = change >= 0 ? 'up' : 'down';
+      return `<div class="ticker-item"><span class="sym">${sym}</span><span class="price">${fmtPrice(m.mark_price)}</span><span class="${cls}">${fmtPct(change * 100)}</span></div>`;
+    }).join('');
+
+    track.innerHTML = items + items; // duplicate for seamless loop
+  }
+
+  function updateStats(markets) {
+    const totalVol = markets.reduce((s, m) => s + (m['24h_amount'] || 0), 0);
+    const totalOI = markets.reduce((s, m) => s + (m.open_interest || 0), 0);
+
+    const volEl = document.getElementById('stat-volume');
+    const oiEl = document.getElementById('stat-oi');
+    const mktEl = document.getElementById('stat-markets');
+
+    if (volEl) volEl.innerHTML = fmtM(totalVol);
+    if (oiEl) oiEl.innerHTML = fmtM(totalOI);
+    if (mktEl) mktEl.innerHTML = `${markets.length}<span>+</span>`;
+  }
+
+  function updateHeroPanel(markets) {
+    const panel = document.getElementById('hero-markets');
+    if (!panel || !markets.length) return;
+
+    const top5 = markets.slice(0, 5);
+    panel.innerHTML = top5.map(m => {
+      const sym = m.symbol.replace('PERP_','').replace('_USDC','-PERP');
+      const open = m['24h_open'] || 0; const close = m['24h_close'] || m.mark_price || 0; const change = open ? ((close - open) / open) * 100 : 0;
+      const lev = m.base_mmr ? Math.round(1 / (m.base_mmr * 2)) : '—';
+      const cls = change >= 0 ? 'market-change-up' : 'market-change-down';
+      return `<div class="market-row">
+        <span class="market-name">${sym}</span>
+        <span class="market-lev">${lev}x</span>
+        <span class="${cls}">${fmtPct(change)}</span>
+      </div>`;
+    }).join('');
+  }
+
+  function updateTable(markets) {
+    const tbody = document.getElementById('markets-tbody');
+    if (!tbody || !markets.length) return;
+
+    const top8 = markets.slice(0, 8);
+    tbody.innerHTML = top8.map(m => {
+      const sym = m.symbol.replace('PERP_','').replace('_USDC','-PERP');
+      const open = m['24h_open'] || 0; const close = m['24h_close'] || m.mark_price || 0; const change = open ? ((close - open) / open) * 100 : 0;
+      const funding = (m.last_funding_rate ?? 0) * 100;
+      const lev = m.base_mmr ? Math.round(1 / (m.base_mmr * 2)) : '—';
+      const chgCls = change >= 0 ? 'td-up' : 'td-down';
+      const fundCls = funding >= 0 ? 'td-up' : 'td-down';
+      return `<tr>
+        <td><div class="td-sym"><div class="sym-dot"></div>${sym}</div></td>
+        <td class="td-lev">${lev}×</td>
+        <td class="td-muted">$${fmt(m['24h_amount'] || 0, 0)}</td>
+        <td class="td-muted">$${fmt(m.open_interest || 0, 0)}</td>
+        <td class="${chgCls}">${fmtPct(change)}</td>
+        <td class="${fundCls}">${fmtPct(funding)}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  async function refresh() {
+    const markets = await fetchMarkets();
+    if (!markets.length) return;
+
+    // Sort by 24h volume descending
+    markets.sort((a, b) => (b['24h_amount'] || 0) - (a['24h_amount'] || 0));
+
+    updateTicker(markets);
+    updateStats(markets);
+    updateHeroPanel(markets);
+    updateTable(markets);
+  }
+
+  // Initial load + refresh every 30s
+  refresh();
+  setInterval(refresh, 30000);
+</script>
 </body>
 </html>
