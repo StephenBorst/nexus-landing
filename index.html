@@ -303,16 +303,26 @@ function calcChange(m){
   return Math.abs(p)>25?0:p;
 }
 function calcLev(m){
+  if(leverageMap[m.symbol])return leverageMap[m.symbol];
   if(m.base_imr&&m.base_imr>0)return Math.round(1/m.base_imr);
   if(m.base_mmr&&m.base_mmr>0)return Math.round(1/(m.base_mmr*2));
   return null;
 }
 
+let leverageMap={};
+
 async function fetchData(){
   try{
     const res=await fetch(PROXY);
     const json=await res.json();
-    return json.data?.rows||json.markets?.data?.rows||[];
+    // Build leverage map from instruments
+    const instruments=json.instruments?.data?.rows||[];
+    instruments.forEach(i=>{
+      if(i.symbol&&i.base_imr&&i.base_imr>0){
+        leverageMap[i.symbol]=Math.round(1/i.base_imr);
+      }
+    });
+    return json.markets?.data?.rows||json.data?.rows||[];
   }catch(e){
     console.warn('API error:',e);
     return[];
