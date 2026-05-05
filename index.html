@@ -108,6 +108,14 @@
     .footer-links a:hover{color:var(--text)}
     .footer-badge{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:6px}
     .footer-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+    /* THE LAB — section intro text */
+    .lab-intro{font-size:14px;line-height:1.8;color:var(--muted);max-width:640px;margin-bottom:56px}
+    /* Trust callout strip */
+    .trust-callout{display:flex;align-items:flex-start;gap:14px;border:1px solid rgba(0,229,160,0.15);background:rgba(0,229,160,0.03);padding:18px 24px;margin-bottom:48px;font-size:12px;line-height:1.7;color:var(--muted)}
+    .trust-callout .trust-icon{color:var(--accent);font-size:16px;flex-shrink:0;margin-top:1px}
+    .trust-callout strong{color:var(--text);font-weight:500}
+    /* Leaderboard badge */
+    .onchain-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(0,229,160,0.2);padding:4px 10px;margin-bottom:8px}
     @media(max-width:900px){
       nav{padding:0 24px}
       .nav-links{display:none}
@@ -134,6 +142,7 @@
   <ul class="nav-links">
     <li><a href="#markets">Markets</a></li>
     <li><a href="#features">Features</a></li>
+    <li><a href="#lab">The Lab</a></li>
     <li><a href="#leaderboard">Leaderboard</a></li>
     <li><a href="#referral">Referral</a></li>
     <li><a href="#docs">Docs</a></li>
@@ -150,8 +159,8 @@
 <section class="hero">
   <div class="hero-left">
     <div class="hero-label">Perpetual DEX &middot; Built on Arbitrum &middot; Powered by the Orderly Network</div>
-     <h1>Trade <em>Anything.</em><br>On-Chain.</h1>
-    <p class="hero-sub">Nexus Trading Labs delivers traders professional-grade perpetuals execution on 93+ assets. </p>
+    <h1>Trade <em>Anything.</em><br>On-Chain.</h1>
+    <p class="hero-sub">Nexus Trading Labs delivers traders professional-grade perpetuals execution on 93+ assets.</p>
     <div class="hero-actions">
       <a href="https://trade.nexustradinglabs.com" class="btn-primary">Start Trading</a>
       <a href="#markets" class="btn-secondary" style="margin-left:8px">View Markets &rarr;</a>
@@ -188,12 +197,13 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ FEATURES ═══ -->
 <section class="section" id="features">
   <div class="section-label">Why Nexus</div>
-  <h2 class="section-title">Because we believe trading should be borderless, liquidity should be shared, and markets should be unified all within one UX. </h2>
+  <h2 class="section-title">Because we believe trading should be borderless, liquidity should be shared, and markets should be unified all within one UX.</h2>
   <div class="grid3">
     <div class="card"><div class="card-tag">Core</div><div class="card-icon">&#9889;</div><div class="card-title">Deep On-Chain Liquidity</div><p class="card-desc">Powered by Orderly Network's shared liquidity layer. Access deep order books without trusting a centralized intermediary with your funds.</p></div>
-    <div class="card"><div class="card-tag">Unique</div><div class="card-icon">&#9672;</div><div class="card-title">Trade 93+ assets</div><p class="card-desc">Crypto perpetuals, RWA synthetics, equity indices — all from one interface. BTC, ETH, SOL, Silver, NVDA, TSLA, SPX500 and more.</p></div>
+    <div class="card"><div class="card-tag">Unique</div><div class="card-icon">&#9672;</div><div class="card-title">Trade 93+ Assets</div><p class="card-desc">Crypto perpetuals, RWA synthetics, equity indices — all from one interface. BTC, ETH, SOL, Silver, NVDA, TSLA, SPX500 and more.</p></div>
     <div class="card"><div class="card-tag">Live</div><div class="card-icon">&#9635;</div><div class="card-title">Pro-Grade Charting</div><p class="card-desc">TradingView-powered charts with full technical analysis tooling. The same charts professional traders rely on, directly in the DEX.</p></div>
     <div class="card"><div class="card-tag">Security</div><div class="card-icon">&#9685;</div><div class="card-title">Non-Custodial</div><p class="card-desc">Your keys, your funds. Connect your wallet and trade directly — no deposits to a centralized exchange, no counterparty risk.</p></div>
     <div class="card"><div class="card-tag">Network</div><div class="card-icon">&#11041;</div><div class="card-title">Arbitrum Native</div><p class="card-desc">Built on Arbitrum for low fees and fast settlement. Get execution quality you'd expect from a CEX at a fraction of the cost.</p></div>
@@ -201,6 +211,45 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ THE LAB ════ -->
+<section class="section section-alt" id="lab">
+  <div class="section-label">The Lab</div>
+  <h2 class="section-title">Your On-Chain Trading Journal.</h2>
+  <p class="lab-intro">Build a thesis. Set your entry, stop-loss, and take-profit. Publish it on-chain. Every call is timestamped on Arbitrum — tamper-proof, verifiable by anyone.</p>
+  <div class="grid2">
+
+    <div class="card">
+      <div class="card-tag">LAB</div>
+      <div class="card-icon">&#9999;</div>
+      <div class="card-title">Thesis Executor</div>
+      <p class="card-desc">Log trades with full context: symbol, direction, entry/SL/TP, position size, thesis notes. Private by default. Go public when you're ready.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Social</div>
+      <div class="card-icon">&#9654;</div>
+      <div class="card-title">Public Feed</div>
+      <p class="card-desc">Browse real trades from real wallets. No anonymous claims. On-chain proof or it didn't happen.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">Unique</div>
+      <div class="card-icon">&#8634;</div>
+      <div class="card-title">Copy Trading</div>
+      <p class="card-desc">One-click copy of any public thesis, pre-filled with your own risk parameters. Full attribution. You own your execution.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">On-Chain</div>
+      <div class="card-icon">&#9733;</div>
+      <div class="card-title">Rep Score</div>
+      <p class="card-desc">Reputation built from your verified win rate, R:R, and trade history. Can't be bought. Can't be faked.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ MARKETS ════ -->
 <div class="markets-strip" id="markets">
   <table class="markets-table">
     <thead>
@@ -214,20 +263,27 @@
   </table>
 </div>
 
+<!-- ═══════════════════════════════════════ LEADERBOARD ══ -->
 <section class="section section-alt" id="leaderboard">
   <div class="section-label">Leaderboard</div>
-  <h2 class="section-title">Top traders on Nexus.</h2>
+  <h2 class="section-title">Ranked by Rep Score. Verified on-chain.</h2>
+
+  <div class="trust-callout">
+    <span class="trust-icon">&#9741;</span>
+    <span>Every thesis registered on-chain via <strong>ThesisRegistry</strong> on Arbitrum. Stats are verifiable. No server can manipulate the leaderboard. Look for the <strong>&#9741; on-chain verified</strong> badge on traders with blockchain-confirmed track records.</span>
+  </div>
+
   <div class="grid2" style="margin-bottom:40px">
     <div class="card">
       <div class="card-icon">&#127942;</div>
-      <div class="card-title">Volume Leaderboard</div>
-      <p class="card-desc">Compete for the top spot by trading volume. Updated in real-time. The best traders rise to the top.</p>
+      <div class="card-title">Rep Score Rankings</div>
+      <p class="card-desc">Traders are ranked by Rep Score — a composite of win rate and average R:R ratio. No volume farming. No anonymous flex. Every rank is earned in real markets and settled on Arbitrum.</p>
       <a href="https://trade.nexustradinglabs.com/leaderboard" class="card-link">View Leaderboard &rarr;</a>
     </div>
     <div class="card">
       <div class="card-icon">&#128200;</div>
-      <div class="card-title">PnL Rankings</div>
-      <p class="card-desc">Track the most profitable traders on the platform. See who's winning in real markets with real money.</p>
+      <div class="card-title">Trader Profiles</div>
+      <p class="card-desc">Every trader gets a shareable on-chain r&eacute;sum&eacute; — a public record of their thesis history, win rate, and R:R. The leaderboard doesn't lie. Your track record lives on-chain forever.</p>
       <a href="https://trade.nexustradinglabs.com/leaderboard" class="card-link">View Rankings &rarr;</a>
     </div>
   </div>
@@ -236,6 +292,7 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ REFERRAL ════ -->
 <section class="section" id="referral">
   <div class="section-label">Referral Program</div>
   <h2 class="section-title">Earn by growing the community.</h2>
@@ -249,6 +306,7 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ DOCS ════════ -->
 <section class="section section-alt" id="docs">
   <div class="section-label">Documentation</div>
   <h2 class="section-title">Everything you need to get started.</h2>
@@ -259,6 +317,7 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ CTA ═════════ -->
 <div class="cta-wrap">
   <div>
     <div class="cta-title">Ready to trade on-chain?</div>
@@ -267,6 +326,7 @@
   <a href="https://trade.nexustradinglabs.com" class="btn-primary" style="white-space:nowrap">Launch App &rarr;</a>
 </div>
 
+<!-- ═══════════════════════════════════════ FOOTER ══════ -->
 <footer>
   <div class="footer-left">
     <div class="footer-logo">Nexus Trading Labs</div>
