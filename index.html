@@ -196,6 +196,18 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ $NEXUS ═════ -->
+<section style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)">
+  <div style="max-width:1200px;margin:0 auto;padding:14px 48px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;font-family:var(--mono)">
+    <span style="font-weight:600;color:var(--accent);letter-spacing:0.12em;font-size:13px">$NEXUS</span>
+    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">PRICE</span><b id="nx-price" style="font-size:14px;color:var(--text)">&mdash;</b></div>
+    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">MARKET CAP</span><b id="nx-mc" style="font-size:14px;color:var(--text)">&mdash;</b></div>
+    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">24H VOL</span><b id="nx-vol" style="font-size:14px;color:var(--text)">&mdash;</b></div>
+    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">LIQUIDITY</span><b id="nx-liq" style="font-size:14px;color:var(--text)">&mdash;</b></div>
+    <a href="https://www.geckoterminal.com/base/tokens/0x3D958634ab725B627919EF8F2Ed59227309fDba3" target="_blank" rel="noopener" style="margin-left:auto;font-size:10px;letter-spacing:0.06em;color:var(--accent);text-decoration:none;border:1px solid var(--border);padding:5px 10px">GeckoTerminal &#8599;</a>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════ FEATURES ═══ -->
 <section class="section" id="features">
   <div class="section-label">The Foundation</div>
@@ -500,6 +512,27 @@ async function refresh(){
 
 refresh();
 setInterval(refresh,30000);
+
+// $NEXUS token market data — GeckoTerminal (client-side; datacenter IPs get 403'd)
+async function fetchNexus(){
+  try{
+    const r=await fetch('https://api.geckoterminal.com/api/v2/networks/base/tokens/0x3D958634ab725B627919EF8F2Ed59227309fDba3',{headers:{Accept:'application/json'}});
+    const j=await r.json();
+    const a=j&&j.data&&j.data.attributes; if(!a)return;
+    const num=v=>v==null?null:Number(v);
+    const price=num(a.price_usd);
+    const mc=num(a.market_cap_usd)!=null?num(a.market_cap_usd):num(a.fdv_usd);
+    const vol=a.volume_usd?num(a.volume_usd.h24):null;
+    const liq=num(a.total_reserve_in_usd);
+    const set=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html;};
+    set('nx-price',price==null?'&mdash;':(price>=1?'$'+price.toFixed(4):'$'+price.toPrecision(3)));
+    set('nx-mc',fmtM(mc));
+    set('nx-vol',fmtM(vol));
+    set('nx-liq',fmtM(liq));
+  }catch(e){console.warn('nexus market error',e);}
+}
+fetchNexus();
+setInterval(fetchNexus,60000);
 </script>
 </body>
 </html>
