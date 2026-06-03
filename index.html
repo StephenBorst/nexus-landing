@@ -525,7 +525,7 @@ async function fetchNexus(){
     const vol=a.volume_usd?num(a.volume_usd.h24):null;
     const liq=num(a.total_reserve_in_usd);
     const set=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html;};
-    set('nx-price',price==null?'&mdash;':(price>=1?'$'+price.toFixed(4):'$'+price.toPrecision(3)));
+    set('nx-price',price==null||!isFinite(price)?'&mdash;':(price>=1?'$'+price.toLocaleString('en-US',{maximumFractionDigits:4}):'$'+price.toFixed(Math.min(18,Math.max(2,2-Math.floor(Math.log10(price)))))));
     set('nx-mc',fmtM(mc));
     set('nx-vol',fmtM(vol));
     set('nx-liq',fmtM(liq));
