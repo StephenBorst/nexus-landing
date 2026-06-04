@@ -56,10 +56,10 @@
     .live-dot{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--accent)}
     .live-dot::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-    .stats-grid{display:grid;grid-template-columns:1fr 1fr}
-    .stat-cell{padding:24px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .stat-cell:nth-child(even){border-right:none}
-    .stat-cell:nth-last-child(-n+2){border-bottom:none}
+    .stats-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+    .stat-cell{padding:24px 20px;border-right:1px solid var(--border)}
+    .stat-cell:last-child{border-right:none}
+    @media(max-width:540px){.stats-grid{grid-template-columns:1fr 1fr}.stat-cell{border-bottom:1px solid var(--border)}.stat-cell:nth-child(even){border-right:none}.stat-cell:last-child{border-bottom:none}}
     .stat-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
     .stat-value{font-family:var(--sans);font-size:26px;font-weight:700;color:var(--text)}
     .stat-value span{font-size:13px;color:var(--accent);font-family:var(--mono);font-weight:400}
@@ -182,10 +182,6 @@
           <div class="stat-value" id="stat-oi">—</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-label">TVL</div>
-          <div class="stat-value">$18.3<span>M</span></div>
-        </div>
-        <div class="stat-cell">
           <div class="stat-label">Markets</div>
           <div class="stat-value" id="stat-mkts">—</div>
         </div>
@@ -216,7 +212,7 @@
   <h2 class="section-title">A serious perp DEX underneath — so the edge on top has somewhere to trade.</h2>
   <div class="grid3">
     <div class="card"><div class="card-tag">Core</div><div class="card-icon">&#9889;</div><div class="card-title">Deep On-Chain Liquidity</div><p class="card-desc">Powered by Orderly Network's shared liquidity layer. Access deep order books without trusting a centralized intermediary with your funds.</p></div>
-    <div class="card"><div class="card-tag">Unique</div><div class="card-icon">&#9672;</div><div class="card-title">Trade 93+ Assets</div><p class="card-desc">Crypto perpetuals, RWA synthetics, equity indices — all from one interface. BTC, ETH, SOL, Silver, NVDA, TSLA, SPX500 and more.</p></div>
+    <div class="card"><div class="card-tag">Unique</div><div class="card-icon">&#9672;</div><div class="card-title">Trade 90+ Assets</div><p class="card-desc">Crypto perpetuals, RWA synthetics, equity indices — all from one interface. BTC, ETH, SOL, Silver, NVDA, TSLA, SPX500 and more.</p></div>
     <div class="card"><div class="card-tag">Live</div><div class="card-icon">&#9635;</div><div class="card-title">Pro-Grade Charting</div><p class="card-desc">TradingView-powered charts with full technical analysis tooling. The same charts professional traders rely on, directly in the DEX.</p></div>
     <div class="card"><div class="card-tag">Security</div><div class="card-icon">&#9685;</div><div class="card-title">Non-Custodial</div><p class="card-desc">Your keys, your funds. Connect your wallet and trade directly — no deposits to a centralized exchange, no counterparty risk.</p></div>
     <div class="card"><div class="card-tag">Network</div><div class="card-icon">&#11041;</div><div class="card-title">Arbitrum Native</div><p class="card-desc">Built on Arbitrum for low fees and fast settlement. Get execution quality you'd expect from a CEX at a fraction of the cost.</p></div>
