@@ -519,7 +519,21 @@ function calcChange(m){
   const p=((c-o)/o)*100;
   return Math.abs(p)>25?0:p;
 }
+// Max leverage isn't in the futures feed — it's derived from base_imr in /v1/public/info
+// (max leverage = 1/base_imr). Fetched once (CORS-open) and cached in LEV by symbol.
+const LEV={};
+async function fetchLeverage(){
+  try{
+    const r=await fetch('https://api.orderly.org/v1/public/info',{headers:{Accept:'application/json'}});
+    const j=await r.json();
+    (j.data?.rows||[]).forEach(m=>{
+      const imr=parseFloat(m.base_imr);
+      if(imr>0)LEV[m.symbol]=Math.round(1/imr);
+    });
+  }catch(e){console.warn('leverage fetch error',e);}
+}
 function calcLev(m){
+  if(LEV[m.symbol])return LEV[m.symbol];
   if(m.max_leverage&&m.max_leverage>0)return m.max_leverage;
   return null;
 }
@@ -584,7 +598,7 @@ function renderTable(ms){
 }
 
 async function refresh(){
-  const ms=await fetchData();
+  const [ms]=await Promise.all([fetchData(), Object.keys(LEV).length?null:fetchLeverage()]);
   if(!ms.length)return;
   ms.sort((a,b)=>(parseFloat(b['24h_amount'])||0)-(parseFloat(a['24h_amount'])||0));
   renderTicker(ms);
