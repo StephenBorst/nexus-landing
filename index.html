@@ -208,6 +208,17 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ TREASURY ═══ -->
+<section style="border-bottom:1px solid var(--border);background:var(--bg2)">
+  <div class="nx-strip" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:28px;flex-wrap:wrap;font-family:var(--mono)">
+    <span style="font-weight:600;color:var(--accent);letter-spacing:0.12em;font-size:13px">&#127974; TREASURY</span>
+    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">PUBLIC SAFE &middot; USDC</span><b id="tr-usdc" style="font-size:14px;color:var(--text)">&mdash;</b></div>
+    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">NETWORKS</span><b style="font-size:14px;color:var(--text)">Base + Arbitrum</b></div>
+    <span style="font-size:11px;color:var(--muted);max-width:360px;line-height:1.5">A 1/1 multisig anyone can watch. Fees flow in; the treasury accumulates $NEXUS on the open market and holds &mdash; a war chest that funds retroactive Seasons.</span>
+    <a href="https://app.safe.global/balances?safe=base:0x4Fe2c01bbeFaFFa35706C994646a3F8493B1C733" target="_blank" rel="noopener" style="margin-left:auto;font-size:10px;letter-spacing:0.06em;color:var(--accent);text-decoration:none;border:1px solid var(--border);padding:5px 10px">View Safe &#8599;</a>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════ FEATURES ═══ -->
 <section class="section" id="features">
   <div class="section-label">The Foundation</div>
@@ -661,6 +672,33 @@ async function fetchNexus(){
 }
 fetchNexus();
 setInterval(fetchNexus,60000);
+
+// Treasury — sum the public Safe's USDC across Base + Arbitrum via public-RPC
+// eth_call (no SDK). Verified Safe address; fail-soft (leaves — if both RPCs die).
+const TREASURY='0x4Fe2c01bbeFaFFa35706C994646a3F8493B1C733';
+async function usdcBalance(rpcs,token){
+  const data='0x70a08231000000000000000000000000'+TREASURY.slice(2).toLowerCase();
+  for(const rpc of rpcs){
+    try{
+      const r=await fetch(rpc,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'eth_call',params:[{to:token,data},'latest']})});
+      const j=await r.json();
+      if(j&&j.result&&j.result!=='0x')return Number(BigInt(j.result))/1e6;
+    }catch(e){/* try next rpc */}
+  }
+  return null;
+}
+async function fetchTreasury(){
+  const [base,arb]=await Promise.all([
+    usdcBalance(['https://mainnet.base.org','https://base-rpc.publicnode.com'],'0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'),
+    usdcBalance(['https://arb1.arbitrum.io/rpc','https://arbitrum-one-rpc.publicnode.com'],'0xaf88d065e77c8cC2239327C5EDb3A432268e5831'),
+  ]);
+  if(base==null&&arb==null)return; // both RPCs failed → keep placeholder
+  const total=(base||0)+(arb||0);
+  const el=document.getElementById('tr-usdc');
+  if(el)el.textContent='$'+total.toLocaleString('en-US',{maximumFractionDigits:total<1000?2:0});
+}
+fetchTreasury();
+setInterval(fetchTreasury,60000);
 </script>
 </body>
 </html>
