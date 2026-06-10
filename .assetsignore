@@ -2,8 +2,13 @@
 .git/**
 .github
 .github/**
+.gitignore
 .assetsignore
 wrangler.jsonc
+.vercel
+.vercel/**
+.wrangler
+.wrangler/**
 node_modules
 node_modules/**
 package.json
