@@ -66,6 +66,8 @@
     .stat-value{font-family:var(--sans);font-size:26px;font-weight:700;color:var(--text)}
     .stat-value span{font-size:13px;color:var(--accent);font-family:var(--mono);font-weight:400}
     .stats-markets{border-top:1px solid var(--border)}
+    .skel{display:inline-block;height:11px;border-radius:3px;background:linear-gradient(90deg,#17171a 25%,#242428 50%,#17171a 75%);background-size:200% 100%;animation:shimmer 1.5s ease-in-out infinite}
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
     .market-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:12px 20px;border-bottom:1px solid var(--border);font-size:12px}
     .market-row:last-child{border-bottom:none}
     .market-name{color:var(--text);font-weight:500}
@@ -177,19 +179,23 @@
       <div class="stats-grid">
         <div class="stat-cell">
           <div class="stat-label">24h Volume</div>
-          <div class="stat-value" id="stat-vol">—</div>
+          <div class="stat-value" id="stat-vol"><span class="skel" style="width:74px;height:20px"></span></div>
         </div>
         <div class="stat-cell">
           <div class="stat-label">Open Interest</div>
-          <div class="stat-value" id="stat-oi">—</div>
+          <div class="stat-value" id="stat-oi"><span class="skel" style="width:74px;height:20px"></span></div>
         </div>
         <div class="stat-cell">
           <div class="stat-label">Markets</div>
-          <div class="stat-value" id="stat-mkts">—</div>
+          <div class="stat-value" id="stat-mkts"><span class="skel" style="width:56px;height:20px"></span></div>
         </div>
       </div>
       <div class="stats-markets" id="hero-markets">
-        <div class="market-row"><span class="market-name" style="color:var(--muted)">Loading...</span></div>
+        <div class="market-row"><span class="skel" style="width:74px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:46px"></span></div>
+        <div class="market-row"><span class="skel" style="width:66px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:44px"></span></div>
+        <div class="market-row"><span class="skel" style="width:70px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:42px"></span></div>
+        <div class="market-row"><span class="skel" style="width:62px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:48px"></span></div>
+        <div class="market-row"><span class="skel" style="width:72px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:44px"></span></div>
       </div>
     </div>
   </div>
@@ -436,7 +442,9 @@
       </tr>
     </thead>
     <tbody id="markets-tbody">
-      <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:32px">Loading live markets...</td></tr>
+      <tr><td><span class="skel" style="width:90px"></span></td><td><span class="skel" style="width:40px"></span></td><td><span class="skel" style="width:80px"></span></td><td><span class="skel" style="width:80px"></span></td><td><span class="skel" style="width:50px"></span></td><td><span class="skel" style="width:50px"></span></td></tr>
+      <tr><td><span class="skel" style="width:80px"></span></td><td><span class="skel" style="width:40px"></span></td><td><span class="skel" style="width:70px"></span></td><td><span class="skel" style="width:74px"></span></td><td><span class="skel" style="width:50px"></span></td><td><span class="skel" style="width:50px"></span></td></tr>
+      <tr><td><span class="skel" style="width:86px"></span></td><td><span class="skel" style="width:40px"></span></td><td><span class="skel" style="width:78px"></span></td><td><span class="skel" style="width:70px"></span></td><td><span class="skel" style="width:50px"></span></td><td><span class="skel" style="width:50px"></span></td></tr>
     </tbody>
   </table>
 </div>
