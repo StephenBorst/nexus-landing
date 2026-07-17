@@ -39,7 +39,7 @@
     .dn{color:var(--red)}
     @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
     .hero{min-height:calc(100vh - 96px);display:grid;grid-template-columns:1fr 1fr;position:relative}
-    .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);pointer-events:none}
+    .hero::before{display:none}
     .hero-left{padding:80px 48px 80px 80px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
     .hero-label{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:28px;white-space:nowrap}
     h1{font-family:var(--serif);font-size:clamp(40px,4.6vw,62px);font-weight:700;line-height:1.08;letter-spacing:-0.015em;margin-bottom:24px;color:var(--text)}
