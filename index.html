@@ -639,7 +639,10 @@ function renderStats(ms){
   const mk=document.getElementById('stat-mkts');
   if(v)v.innerHTML=fmtM(vol);
   if(o)o.innerHTML=fmtM(oi);
-  if(mk)mk.innerHTML=ms.length+'<span>+</span>';
+  // Bucket the live market count DOWN to the nearest 10 so the widget reads "120+"
+  // — congruent with the "120+ perps" copy elsewhere on the page, and evergreen
+  // (auto-advances to 130+ etc. as markets are added; the floor claim stays true).
+  if(mk)mk.innerHTML=(Math.floor(ms.length/10)*10)+'<span>+</span>';
 }
 
 function renderHero(ms){
