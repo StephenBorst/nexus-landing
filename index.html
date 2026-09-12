@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nexus Trading Labs — The On-Chain Trading Terminal</title>
-  <meta name="description" content="The trading terminal that makes you a better trader. Track what the top on-chain traders are doing and copy their moves, x-ray any wallet free, trade 130+ perps on Arbitrum, build &amp; backtest your own strategies, simulate any trade before you take it, automate with an autonomous agent, plan with the Nexus thesis engine, get an AI copilot that reads your book — and prove it on leaderboards graded from public data and anchored on-chain. Powered by Orderly Network."/>
-  <meta property="og:title" content="Nexus Trading Labs — The On-Chain Trading Terminal"/>
-  <meta property="og:description" content="Plan it. Automate it. Prove it. Build &amp; backtest trading strategies, run an autonomous agent, and verify every track record yourself — trustless, on-chain-graded, on a 130+ market perp DEX. Plus Nexus Arena: the open proving ground where any AI agent earns a track record it can't fake. Powered by Orderly."/>
+  <title>Nexus Trading Labs — plan it, run it, prove it</title>
+  <meta name="description" content="Nexus turns a trade into a process: plan a thesis, run an autonomous agent in paper, grade the record from public price, and inspect the ledger anchored on Arbitrum. Order-only agent keys that can't withdraw. Non-custodial perps, powered by Orderly."/>
+  <meta property="og:title" content="Nexus Trading Labs — plan it, run it, prove it"/>
+  <meta property="og:description" content="Plan it. Run it. Prove it. A thesis engine, an autonomous agent (paper first, order-only keys that can't withdraw), and track records graded from public price — with the ledger anchored on Arbitrum. Don't trust a screenshot; inspect the contract. Powered by Orderly."/>
   <meta property="og:image" content="https://nexustradinglabs.com/preview.png"/>
   <meta property="og:url" content="https://nexustradinglabs.com"/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Nexus Trading Labs — The On-Chain Trading Terminal"/>
-  <meta name="twitter:description" content="Plan it. Automate it. Prove it. Autonomous agents, trustless on-chain-graded track records, and Nexus Arena — the open proving ground where any AI agent earns a record it can't fake. 130+ perp markets. Powered by Orderly."/>
+  <meta name="twitter:title" content="Nexus Trading Labs — plan it, run it, prove it"/>
+  <meta name="twitter:description" content="Plan it. Run it. Prove it. An autonomous agent (paper first, order-only keys), and track records graded from public price with the ledger anchored on Arbitrum. Don't trust a screenshot — inspect the contract. Powered by Orderly."/>
   <meta name="twitter:image" content="https://nexustradinglabs.com/preview.png"/>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
@@ -149,782 +149,122 @@
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">Nexus Trading Labs</a>
+  <a href="#top" class="nav-logo">Nexus Trading Labs</a>
   <ul class="nav-links">
-    <li><a href="#lab">The Lab</a></li>
-    <li><a href="#ai">AI Copilot</a></li>
-    <li><a href="#xray">Wallet X-Ray</a></li>
-    <li><a href="#agent">Agent</a></li>
-    <li><a href="#arena">Arena</a></li>
-    <li><a href="#smart">Smart Money</a></li>
-    <li><a href="#mispriced">Mispriced</a></li>
-    <li><a href="#trust">Proof</a></li>
+    <li><a href="#process">The process</a></li>
+    <li><a href="#proof">Proof</a></li>
+    <li><a href="#safety">Safety</a></li>
+    <li><a href="https://trade.nexustradinglabs.com/analyze">X-ray</a></li>
   </ul>
-  <a href="https://trade.nexustradinglabs.com" class="nav-cta">Launch App</a>
+  <a href="https://trade.nexustradinglabs.com/lab" class="nav-cta">Launch The Lab</a>
 </nav>
 
-<div class="ticker">
-  <div class="ticker-track" id="ticker-track">
-    <div class="ticker-item"><span class="sym">Loading markets...</span></div>
-  </div>
-</div>
-
-<section class="hero">
+<!-- ═══════════════════════════════════════ HERO ══════ -->
+<section class="hero" id="top" style="margin-top:60px">
   <div class="hero-left">
-    <div class="hero-label">On-Chain Terminal &middot; Powered by Orderly</div>
-    <h1>The terminal that makes you a <em>better trader.</em></h1>
-    <p class="hero-sub">Most apps just let you trade. Nexus turns every position into a process &mdash; <strong style="color:var(--text)">plan it</strong> in The Nexus Thesis Engine, <strong style="color:var(--text)">automate it</strong> with an autonomous agent, and <strong style="color:var(--text)">prove it</strong> on leaderboards graded from public data that&rsquo;s anchored on-chain. Over 130+ perp markets to trade from, all non-custodial.</p>
+    <div class="hero-label">Onchain terminal · agents graded in public</div>
+    <h1>Plan it. Run it. <em>Prove it.</em></h1>
+    <p class="hero-sub">Nexus turns a trade into a process &mdash; thesis, agent, public-price grade, ledger on Arbitrum. Start in paper. Order-only keys. It can&rsquo;t withdraw.</p>
     <div class="hero-actions">
-      <a href="https://trade.nexustradinglabs.com" class="btn-primary">Launch The Lab</a>
-      <a href="#lab" class="btn-secondary" style="margin-left:8px">See how it works &rarr;</a>
+      <a href="https://trade.nexustradinglabs.com/lab" class="btn-primary">Launch The Lab</a>
+      <a href="#proof" class="btn-secondary">See the proof &rarr;</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="stats-panel">
-      <div class="stats-header">
-        <span>Platform Overview</span>
-        <span class="live-dot">LIVE</span>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-cell">
-          <div class="stat-label">24h Volume</div>
-          <div class="stat-value" id="stat-vol"><span class="skel" style="width:74px;height:20px"></span></div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-label">Open Interest</div>
-          <div class="stat-value" id="stat-oi"><span class="skel" style="width:74px;height:20px"></span></div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-label">Markets</div>
-          <div class="stat-value" id="stat-mkts"><span class="skel" style="width:56px;height:20px"></span></div>
-        </div>
-      </div>
-      <div class="stats-markets" id="hero-markets">
-        <div class="market-row"><span class="skel" style="width:74px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:46px"></span></div>
-        <div class="market-row"><span class="skel" style="width:66px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:44px"></span></div>
-        <div class="market-row"><span class="skel" style="width:70px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:42px"></span></div>
-        <div class="market-row"><span class="skel" style="width:62px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:48px"></span></div>
-        <div class="market-row"><span class="skel" style="width:72px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:44px"></span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ DEMO ══════ -->
-<section class="section" id="demo" style="padding-top:76px;padding-bottom:76px">
-  <div style="max-width:1080px;margin:0 auto;text-align:center">
-    <div class="section-label" style="justify-content:center">See It Work &middot; 30 Seconds</div>
-    <h2 class="section-title" style="margin:0 auto 34px;max-width:660px;text-align:center">Plan it. Ask the AI. Automate it. Prove it.</h2>
-    <div style="border:1px solid var(--border-strong);border-radius:12px;overflow:hidden;background:#000;box-shadow:0 30px 90px rgba(0,0,0,0.55)">
+    <div style="width:100%;max-width:540px;border:1px solid var(--border-strong);border-radius:12px;overflow:hidden;background:#000;box-shadow:0 30px 90px rgba(0,0,0,0.55)">
       <video src="lab-demo.mp4" autoplay muted loop playsinline preload="metadata" poster="preview.png" style="width:100%;display:block"></video>
     </div>
-    <p class="card-desc" style="max-width:580px;margin:24px auto 0;text-align:center">The actual terminal &mdash; market regime, the Thesis Engine, <span style="font-family:var(--mono);color:var(--text)">NEXUS AI</span>, the autonomous agent, and a track record graded on-chain. No slides. This is the product.</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ $NEXUS ═════ -->
-<section style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)">
-  <div class="nx-strip" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:28px;flex-wrap:wrap;font-family:var(--mono)">
-    <span style="font-weight:600;color:var(--accent);letter-spacing:0.12em;font-size:13px">$NEXUS</span>
-    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">PRICE</span><b id="nx-price" style="font-size:14px;color:var(--text)">&mdash;</b></div>
-    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">MARKET CAP</span><b id="nx-mc" style="font-size:14px;color:var(--text)">&mdash;</b></div>
-    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">24H VOL</span><b id="nx-vol" style="font-size:14px;color:var(--text)">&mdash;</b></div>
-    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">LIQUIDITY</span><b id="nx-liq" style="font-size:14px;color:var(--text)">&mdash;</b></div>
-    <a href="https://www.geckoterminal.com/base/tokens/0x3D958634ab725B627919EF8F2Ed59227309fDba3" target="_blank" rel="noopener" style="margin-left:auto;font-size:10px;letter-spacing:0.06em;color:var(--accent);text-decoration:none;border:1px solid var(--border);padding:5px 10px">GeckoTerminal &#8599;</a>
-    <a href="https://app.uniswap.org/swap?chain=base&amp;inputCurrency=ETH&amp;outputCurrency=0x3D958634ab725B627919EF8F2Ed59227309fDba3" target="_blank" rel="noopener" style="font-size:11px;font-weight:700;letter-spacing:0.06em;color:#0a0a0b;background:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:6px 12px;text-decoration:none;white-space:nowrap">BUY $NEXUS &#8599;</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ TREASURY ═══ -->
-<section style="border-bottom:1px solid var(--border);background:var(--bg2)">
-  <div class="nx-strip" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:28px;flex-wrap:wrap;font-family:var(--mono)">
-    <span style="font-weight:600;color:var(--accent);letter-spacing:0.12em;font-size:13px">&#127974; TREASURY</span>
-    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">PUBLIC SAFE &middot; USDC</span><b id="tr-usdc" style="font-size:14px;color:var(--text)">&mdash;</b></div>
-    <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:9px;letter-spacing:0.1em;color:var(--muted)">NETWORKS</span><b style="font-size:14px;color:var(--text)">Base + Arbitrum</b></div>
-    <span style="font-size:11px;color:var(--muted);max-width:360px;line-height:1.5">A 1/1 multisig anyone can watch. Fees flow in; the treasury accumulates $NEXUS on the open market and holds &mdash; a war chest that funds retroactive Seasons.</span>
-    <a href="https://app.safe.global/balances?safe=base:0x4Fe2c01bbeFaFFa35706C994646a3F8493B1C733" target="_blank" rel="noopener" style="margin-left:auto;font-size:10px;letter-spacing:0.06em;color:var(--accent);text-decoration:none;border:1px solid var(--border);padding:5px 10px">View Safe &#8599;</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ FEATURES ═══ -->
-<section class="section" id="features">
-  <div class="section-label">The Foundation</div>
-  <h2 class="section-title">A serious perp DEX underneath — so the edge on top has somewhere to trade.</h2>
+<!-- ═══════════════════════════════════════ THE PROCESS ═ -->
+<section class="section section-alt" id="process">
+  <div class="section-label">The process</div>
+  <h2 class="section-title">Most apps just let you trade. Nexus makes it a process you can check.</h2>
   <div class="grid3">
-    <div class="card"><div class="card-tag">Core</div><div class="card-icon">&#9889;</div><div class="card-title">Deep On-Chain Liquidity</div><p class="card-desc">Powered by Orderly Network's shared liquidity layer. Access deep order books without trusting a centralized intermediary with your funds.</p></div>
-    <div class="card"><div class="card-tag">Unique</div><div class="card-icon">&#9672;</div><div class="card-title">Trade 130+ Assets</div><p class="card-desc">Crypto perpetuals, RWA synthetics, equity indices — all from one interface. BTC, ETH, SOL, Silver, NVDA, TSLA, SPX500 and more.</p></div>
-    <div class="card"><div class="card-tag">Live</div><div class="card-icon">&#9635;</div><div class="card-title">Pro-Grade Charting</div><p class="card-desc">TradingView-powered charts with full technical analysis tooling. The same charts professional traders rely on, directly in the DEX.</p></div>
-    <div class="card"><div class="card-tag">Security</div><div class="card-icon">&#9685;</div><div class="card-title">Non-Custodial</div><p class="card-desc">Your keys, your funds. Connect your wallet and trade directly — no deposits to a centralized exchange, no counterparty risk.</p></div>
-    <div class="card"><div class="card-tag">Network</div><div class="card-icon">&#11041;</div><div class="card-title">Arbitrum Native</div><p class="card-desc">Built on Arbitrum for low fees and fast settlement. Get execution quality you'd expect from a CEX at a fraction of the cost.</p></div>
-    <div class="card"><div class="card-tag">DeFi</div><div class="card-icon">&#9670;</div><div class="card-title">Vaults &amp; Yield</div><p class="card-desc">Put your USDC to work. Provide liquidity to the platform's vaults and earn yield from trading activity — fully on-chain.</p></div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ THE LAB ════ -->
-<section class="section section-alt" id="lab">
-  <div class="section-label">The Lab</div>
-  <h2 class="section-title">Plan it. Automate it. Prove it.</h2>
-  <p class="lab-intro">Welcome to The Lab, where we're turning trading from a one-off transaction into a repeatable loop: scout the market, structure the trade, let an agent run it, and grade yourself on a track record nobody can fake. The kind of edge a desk has, in one terminal.</p>
-  <div class="grid3">
-
     <div class="card">
-      <div class="card-tag">Plan</div>
-      <div class="card-icon">&#9678;</div>
-      <div class="card-title">The Nexus Thesis Engine</div>
-      <p class="card-desc">Size every trade like a pro: anchor entry to live price, snap your stop and targets by R-multiple, and see position size, R:R, funding cost and live P&amp;L instantly. Publish a thesis and it's registered on-chain — a timestamped, un-backdateable call.</p>
+      <div class="card-num">01</div>
+      <div class="card-title">Plan</div>
+      <p class="card-desc">The Thesis Engine sizes the trade &mdash; entry, stop, targets by R-multiple, funding cost, live P&amp;L. The AI can draft it. You confirm. Publish and it&rsquo;s timestamped on-chain &mdash; a call you can&rsquo;t backdate.</p>
     </div>
-
     <div class="card">
-      <div class="card-tag">Automate</div>
-      <div class="card-icon">&#11041;</div>
-      <div class="card-title">Autonomous Trading Agent</div>
-      <p class="card-desc">A bot that runs 24/7 within hard risk limits — a preset or a strategy you built yourself. Scale-out &amp; trailing exits, DCA, TradingView signals. Start in risk-free PAPER, go live when it's proven. Order-only keys — it can never withdraw.</p>
+      <div class="card-num">02</div>
+      <div class="card-title">Run</div>
+      <p class="card-desc">An agent trades your rules 24/7 &mdash; a preset or one you built. Starts in paper, goes live only if you say so. Hard caps, daily-loss limit, kill switch. Order-only keys that can&rsquo;t withdraw.</p>
     </div>
-
     <div class="card">
-      <div class="card-tag">Build</div>
-      <div class="card-icon">&#9670;</div>
-      <div class="card-title">Strategy Workbench</div>
-      <p class="card-desc">Compose a strategy by trading style, backtest it on real market history, then publish it. Shared strategies rank by their author's on-chain-graded record — not screenshots. Build it, test it, prove it.</p>
+      <div class="card-num">03</div>
+      <div class="card-title">Prove</div>
+      <p class="card-desc">Calls and live agents are graded from public price &mdash; first touch of target vs. stop, real settled trades. The ledger root is anchored on Arbitrum. Don&rsquo;t trust a screenshot; inspect the contract.</p>
     </div>
-
-    <div class="card">
-      <div class="card-tag">Scout</div>
-      <div class="card-icon">&#9635;</div>
-      <div class="card-title">Market Intel</div>
-      <p class="card-desc">Funding, open interest, and signal confluence across markets — with a premium charting layer that fuses the crowd's positioning with where the smart money actually sits (&ldquo;THE READ&rdquo;), plus forecast and macro probability lines. The same data the agent trades on, surfaced for you to read the tape.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-tag">Simulate</div>
-      <div class="card-icon">&#9670;</div>
-      <div class="card-title">Simulate Any Trade</div>
-      <p class="card-desc">Before you take the trade, pressure-test it — hundreds of grounded AI agents react across markets and communities hour by hour, surfacing the bull case, the bear case, and the blind spots you didn't think of. A simulation that runs right in the Lab. A thinking tool, never a signal.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-tag">Scout</div>
-      <div class="card-icon">&#9673;</div>
-      <div class="card-title">Smart Money X-Ray</div>
-      <p class="card-desc">X-ray any wallet's real perp record from public settlement — no login. A persistent Tracked Record grades its realized-PnL consistency over time into a Consistency Score, so you can tell a lucky print from a real edge — then &#9889; copy its live positions to your agent.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-tag">Follow</div>
-      <div class="card-icon">&#8634;</div>
-      <div class="card-title">Copy Trades</div>
-      <p class="card-desc">One-click copy of any public thesis, top agent, or smart-money wallet — pre-filled with your own risk budget. And every copy is graded back to the wallet you followed, so "copies of this trader actually returned X" is a number, not a claim.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-tag">Grade</div>
-      <div class="card-icon">&#9636;</div>
-      <div class="card-title">Analytics &amp; Trade Log</div>
-      <p class="card-desc">Trading score, win-rate and hold-time breakdowns, and a full day-by-day journal. See what's working — then do more of it.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-tag">Social</div>
-      <div class="card-icon">&#9993;</div>
-      <div class="card-title">Feed &amp; Wallet DMs</div>
-      <p class="card-desc">A live feed of real, on-chain calls and encrypted wallet-to-wallet messaging (XMTP). Talk to the traders you copy — no anonymous flexing.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-tag">New &middot; AI</div>
-      <div class="card-icon">&#9670;</div>
-      <div class="card-title">NEXUS AI Copilot</div>
-      <p class="card-desc">A terminal-wide AI assistant that reads live market regime, your positions, your performance and the leaderboards — then drafts a thesis for you. Bring your own key; it runs in your browser and never touches our servers.</p>
-    </div>
-
-
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════ PROOF ═════ -->
 <section class="section" id="proof">
-  <div class="section-label">Verify, Don't Trust</div>
-  <h2 class="section-title">A track record you can't fake.</h2>
-  <p class="lab-intro">Every call and every agent trade is graded objectively from public price &mdash; first touch of your target versus your stop &mdash; then anchored on-chain to Arbitrum. Not self-reported. Not screenshots. Anyone can recompute the ledger and check it against the chain. This is the part competitors can't copy: on the leaderboards, being <em>right</em> is the only thing that ranks.</p>
+  <div class="section-label">Proof</div>
+  <h2 class="section-title">A track record you can&rsquo;t fake.</h2>
+  <div class="trust-callout" style="border-left-color:var(--fog);max-width:780px">
+    <span class="trust-icon" style="color:var(--fog)">&#9670;</span>
+    <span><strong>Regime-Gated Invert</strong> is a walk-forward lead &mdash; <strong>not</strong> live-proven, and we label it that way (small sample, ~20 trades). The agents on the board are real settled trades, graded from public price. Paper is your own forward clock, not that board. Every number is what the API reports until you check it &mdash; so check it: the ledger root is anchored on Arbitrum One.</span>
+  </div>
+  <div class="hero-actions">
+    <a href="https://trade.nexustradinglabs.com/proof" class="btn-primary">See the proof</a>
+    <a href="https://arbiscan.io/address/0x57a698df84a44F3dA3dac3E08CA455a55A4eff84" target="_blank" rel="noopener" class="btn-secondary">Verify on Arbitrum &rarr;</a>
+  </div>
+</section>
 
+<!-- ═══════════════════════════════════════ SAFETY ═══ -->
+<section class="section section-alt" id="safety">
+  <div class="section-label">Safety</div>
+  <h2 class="section-title" style="margin-bottom:34px">Non-custodial by default. The agent can&rsquo;t run off with your money.</h2>
   <div class="grid3">
     <div class="card">
-      <div class="card-tag">Objective</div>
-      <div class="card-icon">&#9636;</div>
-      <div class="card-title">Graded from public price</div>
-      <p class="card-desc">Outcomes are reconstructed from public 1h OHLC &mdash; first-touch TP-vs-SL, same-candle counted as a loss. What you type as your P&amp;L is ignored. The tape decides, not the trader.</p>
+      <div class="card-title">Order-only keys</div>
+      <p class="card-desc">The agent&rsquo;s key is derived to place orders only &mdash; it physically cannot withdraw. Blast radius is trading, nothing else.</p>
     </div>
     <div class="card">
-      <div class="card-tag">Anchored</div>
-      <div class="card-icon">&#11041;</div>
-      <div class="card-title">On-chain, recomputable</div>
-      <p class="card-desc">Each ledger read commits a SHA-256 root to an append-only, prev-linked chain on Arbitrum. Recompute it yourself and verify &mdash; the record can't be quietly rewritten.</p>
+      <div class="card-title">Hard caps &amp; kill switch</div>
+      <p class="card-desc">Daily-loss cap, max trades per day, leverage ceiling &mdash; all enforced. One tap kills the agent and closes the position.</p>
     </div>
     <div class="card">
-      <div class="card-tag">Earned</div>
-      <div class="card-icon">&#9670;</div>
-      <div class="card-title">Merit ranks, not followers</div>
-      <p class="card-desc">Verified Callers climb from &#9642; Signal to &#9670; Sharp to &#10022; Apex on their graded record alone &mdash; hit rate and average R over real, resolved calls. No way to buy the badge.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Any wallet</div>
-      <div class="card-icon">&#9673;</div>
-      <div class="card-title">Graded, even off-platform</div>
-      <p class="card-desc">The same grading runs on any wallet on the network: a Tracked Record scores its realized-PnL consistency over time, and copy records show whether copying it actually made money &mdash; on-chain-auditable, not the trader's self-report.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Contested</div>
-      <div class="card-icon">&#9876;</div>
-      <div class="card-title">Which side has the record</div>
-      <p class="card-desc">When credible callers are opposed on a market, the board doesn't just show the split &mdash; it grades which side has actually been right, combining each side's callers' resolved calls into a win rate and average R. Disagreement, made actionable.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">In the open</div>
-      <div class="card-icon">&#9672;</div>
-      <div class="card-title">We grade our own strategy too</div>
-      <p class="card-desc">We backtested our own strategies in public &mdash; directional bets were a dead end, so we shipped the most promising lead: a market-neutral funding-carry sleeve that longs the cheapest-funding perp and shorts the richest <em>within each sector</em>. It runs live in paper with the equity curve open &mdash; losers and all &mdash; while we test whether the edge actually holds. We don't ask you to trust it; we show you.</p>
-    </div>
-  </div>
-  <div class="center">
-    <a href="https://trade.nexustradinglabs.com/feed" class="btn-primary">See the Verified Callers</a>
-    <a href="https://trade.nexustradinglabs.com/proof" class="btn-secondary" style="margin-left:8px">Watch the carry sleeve live &rarr;</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ NEXUS AI ════ -->
-<section class="section" id="ai">
-  <div class="section-label">NEXUS AI</div>
-  <h2 class="section-title">An AI copilot that actually knows your book.</h2>
-  <p class="lab-intro">Most trading chatbots are blind — they answer from training data. NEXUS AI reads the real terminal: live market regime, funding and open interest, your open positions, your track record, agent status and the trustless leaderboards. Ask it what's setting up, have it draft a sized thesis, or pull up a trader — straight from a floating ◆ on every page.</p>
-
-  <div class="trust-callout">
-    <span class="trust-icon">&#9670;</span>
-    <span>Privacy by design: <strong>bring your own Anthropic or OpenAI key</strong> — it's stored only in your browser and calls the provider directly. Your key never touches a Nexus server. Analysis and education only: it drafts and explains, it never places an order for you.</span>
-  </div>
-
-  <div class="grid3">
-    <div class="card">
-      <div class="card-tag">Context-aware</div>
-      <div class="card-icon">&#9673;</div>
-      <div class="card-title">Reads the Live Tape</div>
-      <p class="card-desc">35+ built-in tools wire it into real data — market regime, the mispriced board, smart-money consensus, the conviction scanner, pending liquidation magnets, your positions and performance, agent status, top agents, verified callers, and the caller-graph (who's contested, who's right fading the crowd) — so answers are grounded in what's actually happening, not a stale guess.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Actionable</div>
-      <div class="card-icon">&#9678;</div>
-      <div class="card-title">Drafts It — and Stages Your Agent</div>
-      <p class="card-desc">Tell it your idea and it pre-fills the Thesis Engine — or stages an exact directional trade for your agent to run — symbol, direction, sizing, ready to review. It opens markets, traders and leaderboards too, but never executes: you confirm.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">BYOK &middot; Free</div>
-      <div class="card-icon">&#9635;</div>
-      <div class="card-title">Yours, In Your Browser</div>
-      <p class="card-desc">Streaming responses, persistent chat, full markdown. Free with your own key — no subscription, no key custody, no middleman between you and the model.</p>
-    </div>
-  </div>
-  <div class="center">
-    <a href="https://trade.nexustradinglabs.com/lab" class="btn-primary">Try NEXUS AI</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ WALLET X-RAY ═ -->
-<section class="section section-alt" id="xray">
-  <div class="section-label">Wallet X-Ray</div>
-  <h2 class="section-title">X-ray any trader. <span style="color:var(--accent)">Free, no login.</span></h2>
-  <p class="lab-intro">Paste any wallet and read its perp record — from <b>Hyperliquid</b> and from the <b>Orderly network</b>, including Nexus itself. Straight off public data: no sign-up, no wallet connect. Hyperliquid's trade-by-trade history powers the deep breakdown — score, risk-adjusted ratios, hold-time, leverage, timing, streaks. Orderly adds the on-chain settled record, market by market. Then copy any live position straight into your agent, which manages the exit and grades the result on-chain.</p>
-
-  <div class="grid3" style="margin-bottom:40px">
-    <div class="card">
-      <div class="card-tag">Open</div>
-      <div class="card-icon">&#9673;</div>
-      <div class="card-title">Any Wallet, Two Venues</div>
-      <p class="card-desc">Drop in an address and read its perp history across Hyperliquid and the Orderly network in one view. Nothing to connect, nothing to install — and every analysis is shareable by link.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Deep</div>
-      <div class="card-icon">&#9636;</div>
-      <div class="card-title">The Full Breakdown</div>
-      <p class="card-desc">The same engine that grades your Nexus trades: composite score, peak-hours heatmap, win/loss streaks, leverage and hold-time profiles, best/worst markets.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Honest</div>
-      <div class="card-icon">&#9741;</div>
-      <div class="card-title">Real Metrics, Not Vanity</div>
-      <p class="card-desc">Sharpe and Sortino are gated behind a real sample size — no inflated ratios on a handful of trades. If the numbers are red, we show them red.</p>
-    </div>
-  </div>
-  <div class="center">
-    <a href="https://trade.nexustradinglabs.com/analyze" class="btn-primary">X-Ray a Wallet &rarr;</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ AGENT ══════ -->
-<section class="section" id="agent">
-  <div class="section-label">Autonomous Trading Agent</div>
-  <h2 class="section-title">A trading desk that runs itself — within limits you set.</h2>
-  <p class="lab-intro">Deploy an autonomous agent that runs <strong style="color:var(--text)">your</strong> strategy 24/7 within hard guardrails — and grades every trade it makes objectively on-chain, never self-reported. Prove it risk-free in PAPER mode, then flip it live. You choose the edge; the agent brings the discipline and the accountability. Non-custodial, order-only, killable anytime.</p>
-
-  <div class="trust-callout">
-    <span class="trust-icon">&#128274;</span>
-    <span>Safe by design: <strong>order-only keys that can never withdraw or transfer your funds</strong>, a daily-loss cap, a max-trades-per-day limit, and a one-tap kill switch. Keys are encrypted at rest. You can deactivate anytime.</span>
-  </div>
-
-  <div class="grid3">
-    <div class="card">
-      <div class="card-tag">Risk-free</div>
-      <div class="card-icon">&#129514;</div>
-      <div class="card-title">Paper Mode</div>
-      <p class="card-desc">New agents start simulated — same strategy, same live prices, zero capital at risk. Build a track record first, graduate to live when you're convinced.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Guardrails</div>
-      <div class="card-icon">&#128737;</div>
-      <div class="card-title">Hard Risk Limits</div>
-      <p class="card-desc">Daily-loss cap, max trades/day, take-profit and stop-loss, max hold time, leverage ceiling — all visible and enforced. The agent stops itself before you have to.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Strategies</div>
-      <div class="card-icon">&#9671;</div>
-      <div class="card-title">Pick Your Edge</div>
-      <p class="card-desc">Five signal modes, fully tunable: funding/OI confluence, funding-only and OI-only (free), plus momentum and mean-reversion on the Nexus PRO tier. Deploy a curated strategy preset in one click, set your own risk caps, and flip on the market-regime filter to skip entries that fight the tape.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">New &middot; Autocopy</div>
-      <div class="card-icon">&#9889;</div>
-      <div class="card-title">Trustless Copy-Trading</div>
-      <p class="card-desc">Every CEX has copy-trading — all of it runs on self-reported PnL. Here, one tap <strong style="color:var(--text)">&#9889; Autocopies</strong> a proven agent: your own agent mirrors its trades at <em>your</em> size, mode and risk limits. Their record is graded on-chain. So is your copy. Copy-trading you can actually verify.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">New &middot; Chat</div>
-      <div class="card-icon">&#128172;</div>
-      <div class="card-title">Deploy From 𝕏</div>
-      <p class="card-desc">Spin up, fund, flip live or kill your agent straight from chat via the Bankr skill on 𝕏 — same non-custodial, order-only keys, derived from your wallet signature. Going live takes an explicit confirmation.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">New &middot; Directional</div>
-      <div class="card-icon">&#9654;</div>
-      <div class="card-title">Trade Your Exact Thesis</div>
-      <p class="card-desc">Hand the agent a specific trade and it enters <strong style="color:var(--text)">your</strong> direction — then manages the exit for you: scale-outs, trailing stop, breakeven, timeout. Fill at market now, or rest a limit at your price. One-shot, PAPER-first, graded on-chain like everything else.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">New &middot; Alerts</div>
-      <div class="card-icon">&#128241;</div>
-      <div class="card-title">Telegram Trade Alerts</div>
-      <p class="card-desc">The agent DMs you on every open and close — entry, targets, realized P&amp;L. Non-custodial: linking a chat can't touch your keys or funds. Opt in, unlink anytime. Autonomy you can actually walk away from.</p>
-    </div>
-  </div>
-  <div class="center">
-    <a href="https://trade.nexustradinglabs.com/lab" class="btn-primary">Deploy an Agent (Paper)</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ ARENA ══════ -->
-<section class="section" id="arena">
-  <div class="section-label">Nexus Arena</div>
-  <h2 class="section-title">The open proving ground for <span style="color:var(--accent)">AI trading agents.</span></h2>
-  <p class="lab-intro">Every AI agent framework claims performance. None can prove it. Register any agent &mdash; a Bankr bot, a LangChain script, a Claude loop &mdash; with one wallet signature, and drive real perp decisions through a single webhook. Fills are simulated (then executed live, once funded) and graded by the venue&rsquo;s own engine: a track record the agent&rsquo;s builder <strong style="color:var(--text)">cannot fake</strong>.</p>
-
-  <div class="trust-callout">
-    <span class="trust-icon">&#9670;</span>
-    <span>Same trustless standard as the human leaderboards. <strong>Paper agents risk zero capital</strong> &mdash; entries fill at public mark price, the engine enforces take-profit, stop-loss and timeout, and every close is recorded by us, never self-reported. Graduate to a funded account and records move onto the on-chain-anchored ledger.</span>
-  </div>
-
-  <div class="grid3" style="margin-bottom:40px">
-    <div class="card">
-      <div class="card-tag">Open</div>
-      <div class="card-icon">&#9673;</div>
-      <div class="card-title">Bring Your Own Brain</div>
-      <p class="card-desc">Register with a wallet signature and get a private webhook. Your agent decides &mdash; Nexus executes and grades. Paper first, zero capital at risk. Live in minutes from a single markdown file.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Graded</div>
-      <div class="card-icon">&#9636;</div>
-      <div class="card-title">Judged by the Engine</div>
-      <p class="card-desc">Entries fill at public mark price; exits are enforced by the same execution engine that runs every Nexus agent. Wins and losses are the venue&rsquo;s record, not a screenshot &mdash; ranked by risk-adjusted score.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Anchored</div>
-      <div class="card-icon">&#11041;</div>
-      <div class="card-title">Graduate to Live &amp; On-Chain</div>
-      <p class="card-desc">Fund the wallet and flip to a live mode: real Orderly orders, an order ID on every trade, and a ledger hash committed to Arbitrum. The board ranks live records above paper.</p>
-    </div>
-  </div>
-  <div class="center">
-    <a href="https://trade.nexustradinglabs.com/arena" class="btn-primary">Enter the Arena &rarr;</a>
-    <div style="margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:0.04em;color:var(--muted)">Building a bot? Point it at <a href="https://trade.nexustradinglabs.com/arena-api.md" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">trade.nexustradinglabs.com/arena-api.md</a> &mdash; written to be read by an agent.</div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ SMART MONEY ═ -->
-<section class="section section-alt" id="smart">
-  <div class="section-label">Smart Money</div>
-  <h2 class="section-title">See what the best traders on-chain <span style="color:var(--accent)">are doing right now.</span></h2>
-  <p class="lab-intro">The top traders on Orderly and Hyperliquid, and exactly what they're holding — indexed live from public on-chain settlement data. Find where the smart money agrees, x-ray any wallet's full record, then copy any move into a risk-managed trade your agent runs and grades on-chain.</p>
-
-  <div class="grid3" style="margin-bottom:40px">
-    <div class="card">
-      <div class="card-tag">Consensus</div>
-      <div class="card-icon">&#9670;</div>
-      <div class="card-title">Where the Whales Agree</div>
-      <p class="card-desc">The highest-conviction signal isn't one whale — it's agreement. See the coins multiple independent top traders are positioned the same way on, ranked by trader count and size.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Native</div>
-      <div class="card-icon">&#9889;</div>
-      <div class="card-title">Copy, Managed &amp; Graded</div>
-      <p class="card-desc">One click turns any move into a directive your agent enters and manages to an exit — scale-out, trailing, breakeven — then grades on-chain. Copying builds your own track record.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Open</div>
-      <div class="card-icon">&#9673;</div>
-      <div class="card-title">X-Ray Any Trader</div>
-      <p class="card-desc">Click any wallet for a full record — realized P&amp;L by market, live positions, win rate — pulled straight from public data. Star the wallets you trust to build a watchlist.</p>
-    </div>
-  </div>
-  <div class="center">
-    <a href="https://trade.nexustradinglabs.com/lab?tab=smart" class="btn-primary">See Smart Money &rarr;</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ MISPRICED ═══ -->
-<section class="section" id="mispriced">
-  <div class="section-label">Mispriced Board</div>
-  <h2 class="section-title">See where the crowd is <span style="color:var(--accent)">overpaying.</span></h2>
-  <p class="lab-intro">Funding is the crowd&rsquo;s mispricing made explicit. When longs are paying to hold, the book is lopsided &mdash; and the mean-revert edge is to fade it. Nexus prices every liquid perp by its funding rate, annualizes it so the numbers are comparable, and ranks the markets where positioning is most stretched right now. Beside each: where the graded, credible callers actually lean.</p>
-
-  <div class="grid3" style="margin-bottom:40px">
-    <div class="card">
-      <div class="card-tag">Ranked</div>
-      <div class="card-icon">&#9670;</div>
-      <div class="card-title">The Gap, Priced</div>
-      <p class="card-desc">Every market&rsquo;s funding rate annualized into a comparable &ldquo;fade edge&rdquo; &mdash; the most stretched at the top, flagged Mispriced vs Priced Fair. The sort order is the signal.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Weighted</div>
-      <div class="card-icon">&#9636;</div>
-      <div class="card-title">vs the Sharp Callers</div>
-      <p class="card-desc">Beside the mechanical funding read, the merit-weighted lean of graded human callers &mdash; so you see agreement, or the more interesting divergence when the two disagree.</p>
-    </div>
-    <div class="card">
-      <div class="card-tag">Actionable</div>
-      <div class="card-icon">&#9889;</div>
-      <div class="card-title">One Click to a Thesis</div>
-      <p class="card-desc">Click a stretched market and the fade drops straight into the thesis engine &mdash; symbol, direction and the funding catalyst pre-filled. Add your levels, grade it on-chain.</p>
-    </div>
-  </div>
-  <div class="center">
-    <a href="https://trade.nexustradinglabs.com/lab?tab=mispriced" class="btn-primary">See the Mispriced Board &rarr;</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ MARKETS ════ -->
-<div class="markets-strip" id="markets">
-  <table class="markets-table">
-    <thead>
-      <tr>
-        <th>Market</th><th>Max Leverage</th><th>24h Volume</th><th>Open Interest</th><th>24h Change</th><th>8h Funding</th>
-      </tr>
-    </thead>
-    <tbody id="markets-tbody">
-      <tr><td><span class="skel" style="width:90px"></span></td><td><span class="skel" style="width:40px"></span></td><td><span class="skel" style="width:80px"></span></td><td><span class="skel" style="width:80px"></span></td><td><span class="skel" style="width:50px"></span></td><td><span class="skel" style="width:50px"></span></td></tr>
-      <tr><td><span class="skel" style="width:80px"></span></td><td><span class="skel" style="width:40px"></span></td><td><span class="skel" style="width:70px"></span></td><td><span class="skel" style="width:74px"></span></td><td><span class="skel" style="width:50px"></span></td><td><span class="skel" style="width:50px"></span></td></tr>
-      <tr><td><span class="skel" style="width:86px"></span></td><td><span class="skel" style="width:40px"></span></td><td><span class="skel" style="width:78px"></span></td><td><span class="skel" style="width:70px"></span></td><td><span class="skel" style="width:50px"></span></td><td><span class="skel" style="width:50px"></span></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- ═══════════════════════════════════════ LEADERBOARD ══ -->
-<section class="section section-alt" id="trust">
-  <div class="section-label">Trustless by Design</div>
-  <h2 class="section-title">Don't trust the leaderboard. Verify it.</h2>
-  <p class="lab-intro">Most "track records" are a number in someone's database. Ours aren't. Every ranking — human caller, autonomous agent, external AI, or team — is graded from data nobody controls, hashed so anyone can recompute it, and anchored to Arbitrum so it can't be rewritten. It all lives in one place: <b style="color:var(--text)">The Proof</b>. This is the moat — not features, but proof.</p>
-
-  <div class="trust-callout">
-    <span class="trust-icon">&#9741;</span>
-    <span>The full trade ledger is published, its <strong>SHA-256 root is committed on-chain hourly</strong>, and anyone can recompute the hash from public data and check it against Arbitrum. Live anchor contract: <strong>0x57a6&hellip;ff84</strong>. We literally cannot fake a number.</span>
-  </div>
-
-  <div class="grid3" style="margin-bottom:40px">
-    <div class="card">
-      <div class="onchain-badge">&#9741; Public-price graded</div>
-      <div class="card-title">Human Calls</div>
-      <p class="card-desc">A thesis is a call. Whether it hit take-profit or stop first is a <strong style="color:var(--text)">fact about public price</strong> — not the trader's self-report. Callers rank on objective, recomputable accuracy. No typing in fake P&amp;L.</p>
-    </div>
-    <div class="card">
-      <div class="onchain-badge">&#9741; Exchange-grounded</div>
-      <div class="card-title">Agent Performance</div>
-      <p class="card-desc">Agents are ranked on real trades that actually settled on Orderly — every record carries its order IDs, auditable against the exchange. Risk-adjusted scoring, not volume farming.</p>
-    </div>
-    <div class="card">
-      <div class="onchain-badge">&#9741; Anchored on Arbitrum</div>
-      <div class="card-title">Tamper-Proof Ledger</div>
-      <p class="card-desc">The canonical ledger hashes to a single root, checkpointed in an append-only chain and committed on-chain. Recompute it yourself; check it against the contract. Provably unaltered.</p>
-    </div>
-  </div>
-  <div class="center">
-    <a href="https://trade.nexustradinglabs.com/proof" class="btn-primary">See The Proof &rarr;</a>
-    <div style="margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:0.04em;color:var(--muted)">Every track record on Nexus — callers, agents, the Arena, and desks — under one recomputable, on-chain-anchored ledger.</div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ REFERRAL ════ -->
-<section class="section" id="referral">
-  <div class="section-label">Referral Program</div>
-  <h2 class="section-title">Earn by growing the community.</h2>
-  <div class="grid3" style="margin-bottom:40px">
-    <div class="card"><div class="card-num">01</div><div class="card-title">Get Your Link</div><p class="card-desc">Connect your wallet and grab your unique referral link from the referral page.</p></div>
-    <div class="card"><div class="card-num">02</div><div class="card-title">Share &amp; Invite</div><p class="card-desc">Share your link with traders. Anyone who signs up through your link is your referral.</p></div>
-    <div class="card"><div class="card-num">03</div><div class="card-title">Earn Rewards</div><p class="card-desc">Earn a percentage of trading fees generated by everyone you refer. Paid on-chain.</p></div>
-  </div>
-  <div class="center">
-    <a href="https://trade.nexustradinglabs.com/rewards/affiliate" class="btn-primary">Start Referring</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ NEXUS PRO ═════ -->
-<section class="section" id="pro">
-  <div class="section-label">Nexus PRO</div>
-  <h2 class="section-title">The operator tier. Always free to start.</h2>
-  <p class="lab-intro">Everything that matters — the Thesis Engine, the autonomous agent, the AI copilot, the trustless leaderboards — is free to use. <strong style="color:var(--text)">Nexus PRO</strong> is the operator tier: it unlocks the advanced agent strategies (momentum &amp; mean-reversion), strategy backtesting + walk-forward validation, hosted AI, and the signal webhook. A plain software subscription: $20/mo in USDC — or just $15 when you pay in $NEXUS (25% off) — or included free if you carry an ARCHITECT $NEXUS balance.</p>
-
-  <div class="grid3">
-    <div class="card">
-      <div class="card-num">$0</div>
-      <div class="card-title">Free Forever</div>
-      <p class="card-desc">Trade 130+ perps, run the Thesis Engine, deploy a paper or live agent on the core strategies, and use NEXUS AI with your own key. No paywall on the essentials.</p>
-    </div>
-    <div class="card">
-      <div class="card-num">$20</div>
-      <div class="card-title">Nexus PRO / month</div>
-      <p class="card-desc">Advanced agent strategies (momentum &amp; mean-reversion), backtesting + walk-forward validation, hosted AI, and priority access to what's next. $20 in USDC, or just $15 paying in $NEXUS (25% off). A subscription to software — no yield, no revenue share.</p>
-    </div>
-    <div class="card">
-      <div class="card-num">&#9670;</div>
-      <div class="card-title">Hold to Unlock</div>
-      <p class="card-desc">Carry an ARCHITECT-tier $NEXUS balance and Nexus PRO is included. $NEXUS is a community meme token — purely cosmetic access and perks, by design.</p>
+      <div class="card-title">You confirm before live</div>
+      <p class="card-desc">Paper is the default and needs no keys. Going live takes an explicit confirmation from you &mdash; every time.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ DOCS ════════ -->
-<section class="section section-alt" id="docs">
-  <div class="section-label">Documentation</div>
-  <h2 class="section-title">Everything you need to get started.</h2>
-  <div class="grid3">
-    <div class="card"><div class="card-icon">&#9678;</div><div class="card-title">Getting Started</div><p class="card-desc">Connect your wallet, deposit USDC, and place your first trade in under 2 minutes.</p><a href="https://trade.nexustradinglabs.com" class="card-link">Launch App &rarr;</a></div>
-    <div class="card"><div class="card-icon">&#9672;</div><div class="card-title">Trading Guide</div><p class="card-desc">Learn how to open and manage perpetual positions, set leverage, and read funding rates.</p><a href="https://orderly.network/docs" target="_blank" class="card-link">Orderly Docs &rarr;</a></div>
-    <div class="card"><div class="card-icon">&#9670;</div><div class="card-title">Community</div><p class="card-desc">Follow us on X for platform updates, trading competitions, and yield opportunities.</p><a href="https://twitter.com/nexustradinglab" target="_blank" class="card-link">Follow @nexustradinglab &rarr;</a></div>
+<!-- ═══════════════════════════════════════ NOT ══════ -->
+<section class="section" style="padding-top:72px;padding-bottom:72px;text-align:center">
+  <div class="section-label" style="justify-content:center">What Nexus is not</div>
+  <p style="font-family:var(--serif);font-size:clamp(23px,2.6vw,34px);font-weight:700;letter-spacing:-0.012em;line-height:1.3;color:var(--text);max-width:740px;margin:0 auto">Not a signal group. Not a custodial bot. Not a backtest PDF.</p>
+  <p class="card-desc" style="max-width:520px;margin:20px auto 0">You can&rsquo;t fake the score &mdash; it&rsquo;s graded from public price, and anyone can inspect it on-chain.</p>
+  <div class="hero-actions" style="justify-content:center;margin-top:36px">
+    <a href="https://trade.nexustradinglabs.com/lab" class="btn-primary">Launch The Lab</a>
+    <a href="https://trade.nexustradinglabs.com/proof" class="btn-secondary">See the proof &rarr;</a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ CTA ═════════ -->
-<div class="cta-wrap">
-  <div>
-    <div class="cta-title">Become a better trader.</div>
-    <p class="cta-sub">Plan your next trade, automate it, and start building a track record you can prove &mdash; on 130+ non-custodial perp markets, powered by Orderly.</p>
-  </div>
-  <a href="https://trade.nexustradinglabs.com" class="btn-primary" style="white-space:nowrap">Launch The Lab &rarr;</a>
-</div>
-
-<!-- ═══════════════════════════════════════ FOOTER ══════ -->
+<!-- ═══════════════════════════════════════ FOOTER ══ -->
 <footer>
   <div class="footer-left">
     <div class="footer-logo">Nexus Trading Labs</div>
-    <div>&copy; 2026 Nexus Trading Labs LLC &middot; Denver, CO</div>
-    <div>Powered by Orderly Network &middot; Built on Arbitrum</div>
+    <div>Onchain terminal &middot; agents graded in public &middot; powered by Orderly</div>
+    <div style="margin-top:12px;font-size:11px;color:var(--accent-dim);line-height:1.7">
+      $NEXUS on Base &mdash;
+      <a href="https://www.geckoterminal.com/base/tokens/0x3D958634ab725B627919EF8F2Ed59227309fDba3" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">chart &#8599;</a> &middot;
+      <a href="https://app.uniswap.org/swap?chain=base&amp;inputCurrency=ETH&amp;outputCurrency=0x3D958634ab725B627919EF8F2Ed59227309fDba3" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">buy &#8599;</a> &middot;
+      <a href="https://app.safe.global/balances?safe=base:0x4Fe2c01bbeFaFFa35706C994646a3F8493B1C733" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">treasury safe &#8599;</a>
+      <span style="display:block;margin-top:4px;color:#3a3a40">a community meme token &mdash; access &amp; cosmetics only. no yield, no revenue share.</span>
+    </div>
   </div>
   <ul class="footer-links">
-    <li><a href="https://trade.nexustradinglabs.com">Trade</a></li>
-    <li><a href="https://trade.nexustradinglabs.com/leaderboard">Leaderboard</a></li>
-    <li><a href="https://trade.nexustradinglabs.com/lab?tab=mispriced">Mispriced</a></li>
-    <li><a href="https://trade.nexustradinglabs.com/arena">Arena</a></li>
+    <li><a href="https://trade.nexustradinglabs.com/lab">Launch The Lab</a></li>
     <li><a href="https://trade.nexustradinglabs.com/proof">Proof</a></li>
-    <li><a href="https://trade.nexustradinglabs.com/rewards/affiliate">Referral</a></li>
-    <li><a href="https://x.com/nexustradinglab">𝕏</a></li>
+    <li><a href="https://trade.nexustradinglabs.com/analyze">X-ray a wallet</a></li>
+    <li><a href="https://trade.nexustradinglabs.com/feed">Feed</a></li>
   </ul>
-  <div class="footer-badge">Operational</div>
 </footer>
 
-<script>
-const PROXY='https://orderly-proxy.stephenpatrick24.workers.dev';
-
-function fmtPrice(n){
-  n=parseFloat(n);
-  if(!n)return'—';
-  if(n>=1000)return'$'+n.toLocaleString('en-US',{maximumFractionDigits:0});
-  if(n>=1)return'$'+n.toFixed(2);
-  return'$'+n.toPrecision(4);
-}
-function fmtM(n){
-  if(!n)return'—';
-  const m=n/1e6;
-  if(m>=1000)return'$'+(n/1e9).toFixed(1)+'<span>B</span>';
-  if(m>=1)return'$'+m.toFixed(1)+'<span>M</span>';
-  return'$'+(n/1e3).toFixed(0)+'<span>K</span>';
-}
-function fmtPct(n){
-  if(n===null||n===undefined)return'—';
-  return(n>=0?'+':'')+n.toFixed(2)+'%';
-}
-function calcChange(m){
-  const o=parseFloat(m['24h_open']);
-  const c=parseFloat(m['24h_close']);
-  if(!o||!c||o===0)return 0;
-  const p=((c-o)/o)*100;
-  return Math.abs(p)>25?0:p;
-}
-// Max leverage isn't in the futures feed — it's derived from base_imr in /v1/public/info
-// (max leverage = 1/base_imr). Fetched once (CORS-open) and cached in LEV by symbol.
-const LEV={};
-async function fetchLeverage(){
-  try{
-    const r=await fetch('https://api.orderly.org/v1/public/info',{headers:{Accept:'application/json'}});
-    const j=await r.json();
-    (j.data?.rows||[]).forEach(m=>{
-      const imr=parseFloat(m.base_imr);
-      if(imr>0)LEV[m.symbol]=Math.round(1/imr);
-    });
-  }catch(e){console.warn('leverage fetch error',e);}
-}
-function calcLev(m){
-  if(LEV[m.symbol])return LEV[m.symbol];
-  if(m.max_leverage&&m.max_leverage>0)return m.max_leverage;
-  return null;
-}
-
-async function fetchData(){
-  try{
-    const res=await fetch(PROXY);
-    const json=await res.json();
-    return json.data?.rows||[];
-  }catch(e){
-    console.warn('API error:',e);
-    return[];
-  }
-}
-
-function renderTicker(ms){
-  const el=document.getElementById('ticker-track');
-  if(!el||!ms.length)return;
-  const items=ms.slice(0,20).map(m=>{
-    const sym=m.symbol.replace('PERP_','').replace('_USDC','/USDC');
-    const chg=calcChange(m);
-    const cls=chg>=0?'up':'dn';
-    return`<div class="ticker-item"><span class="sym">${sym}</span><span class="price">${fmtPrice(m.mark_price)}</span><span class="${cls}">${fmtPct(chg)}</span></div>`;
-  }).join('');
-  el.innerHTML=items+items;
-}
-
-function renderStats(ms){
-  const vol=ms.reduce((s,m)=>s+(parseFloat(m['24h_amount'])||0),0);
-  const oi=ms.reduce((s,m)=>s+(parseFloat(m.open_interest)||0),0);
-  const v=document.getElementById('stat-vol');
-  const o=document.getElementById('stat-oi');
-  const mk=document.getElementById('stat-mkts');
-  if(v)v.innerHTML=fmtM(vol);
-  if(o)o.innerHTML=fmtM(oi);
-  // Bucket the live market count DOWN to the nearest 10 so the widget reads "130+"
-  // — congruent with the "130+ perps" copy elsewhere on the page, and evergreen
-  // (auto-advances to 130+ etc. as markets are added; the floor claim stays true).
-  if(mk)mk.innerHTML=(Math.floor(ms.length/10)*10)+'<span>+</span>';
-}
-
-function renderHero(ms){
-  const el=document.getElementById('hero-markets');
-  if(!el||!ms.length)return;
-  el.innerHTML=ms.slice(0,5).map(m=>{
-    const sym=m.symbol.replace('PERP_','').replace('_USDC','-PERP');
-    const chg=calcChange(m);
-    const lev=calcLev(m);
-    return`<div class="market-row"><span class="market-name">${sym}</span><span class="market-lev">${lev?lev+'x':'—'}</span><span class="${chg>=0?'up':'dn'}">${fmtPct(chg)}</span></div>`;
-  }).join('');
-}
-
-function renderTable(ms){
-  const el=document.getElementById('markets-tbody');
-  if(!el||!ms.length)return;
-  el.innerHTML=ms.slice(0,10).map(m=>{
-    const sym=m.symbol.replace('PERP_','').replace('_USDC','-PERP');
-    const chg=calcChange(m);
-    const fund=(parseFloat(m.last_funding_rate)||0)*100;
-    const lev=calcLev(m);
-    const vol=parseFloat(m['24h_amount'])||0;
-    const oi=parseFloat(m.open_interest)||0;
-    return`<tr><td><div class="td-sym"><div class="sym-dot"></div>${sym}</div></td><td class="td-lev">${lev?lev+'x':'—'}</td><td class="td-m">$${vol.toLocaleString('en-US',{maximumFractionDigits:0})}</td><td class="td-m">$${oi.toLocaleString('en-US',{maximumFractionDigits:0})}</td><td class="${chg>=0?'up':'dn'}">${fmtPct(chg)}</td><td class="${fund>=0?'up':'dn'}">${fmtPct(fund)}</td></tr>`;
-  }).join('');
-}
-
-async function refresh(){
-  const [ms]=await Promise.all([fetchData(), Object.keys(LEV).length?null:fetchLeverage()]);
-  if(!ms.length)return;
-  ms.sort((a,b)=>(parseFloat(b['24h_amount'])||0)-(parseFloat(a['24h_amount'])||0));
-  renderTicker(ms);
-  renderStats(ms);
-  renderHero(ms);
-  renderTable(ms);
-}
-
-refresh();
-setInterval(refresh,30000);
-
-// $NEXUS token market data — GeckoTerminal (client-side; datacenter IPs get 403'd)
-async function fetchNexus(){
-  try{
-    const r=await fetch('https://api.geckoterminal.com/api/v2/networks/base/tokens/0x3D958634ab725B627919EF8F2Ed59227309fDba3',{headers:{Accept:'application/json'}});
-    const j=await r.json();
-    const a=j&&j.data&&j.data.attributes; if(!a)return;
-    const num=v=>v==null?null:Number(v);
-    const price=num(a.price_usd);
-    const mc=num(a.market_cap_usd)!=null?num(a.market_cap_usd):num(a.fdv_usd);
-    const vol=a.volume_usd?num(a.volume_usd.h24):null;
-    const liq=num(a.total_reserve_in_usd);
-    const set=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html;};
-    set('nx-price',price==null||!isFinite(price)?'&mdash;':(price>=1?'$'+price.toLocaleString('en-US',{maximumFractionDigits:4}):'$'+price.toFixed(Math.min(18,Math.max(2,2-Math.floor(Math.log10(price)))))));
-    set('nx-mc',fmtM(mc));
-    set('nx-vol',fmtM(vol));
-    set('nx-liq',fmtM(liq));
-  }catch(e){console.warn('nexus market error',e);}
-}
-fetchNexus();
-setInterval(fetchNexus,60000);
-
-// Treasury — sum the public Safe's USDC across Base + Arbitrum via public-RPC
-// eth_call (no SDK). Verified Safe address; fail-soft (leaves — if both RPCs die).
-const TREASURY='0x4Fe2c01bbeFaFFa35706C994646a3F8493B1C733';
-async function usdcBalance(rpcs,token){
-  const data='0x70a08231000000000000000000000000'+TREASURY.slice(2).toLowerCase();
-  for(const rpc of rpcs){
-    try{
-      const r=await fetch(rpc,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'eth_call',params:[{to:token,data},'latest']})});
-      const j=await r.json();
-      if(j&&j.result&&j.result!=='0x')return Number(BigInt(j.result))/1e6;
-    }catch(e){/* try next rpc */}
-  }
-  return null;
-}
-async function fetchTreasury(){
-  const [base,arb]=await Promise.all([
-    usdcBalance(['https://mainnet.base.org','https://base-rpc.publicnode.com'],'0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'),
-    usdcBalance(['https://arb1.arbitrum.io/rpc','https://arbitrum-one-rpc.publicnode.com'],'0xaf88d065e77c8cC2239327C5EDb3A432268e5831'),
-  ]);
-  if(base==null&&arb==null)return; // both RPCs failed → keep placeholder
-  const total=(base||0)+(arb||0);
-  const el=document.getElementById('tr-usdc');
-  if(el)el.textContent='$'+total.toLocaleString('en-US',{maximumFractionDigits:total<1000?2:0});
-}
-fetchTreasury();
-setInterval(fetchTreasury,60000);
-
-// Scroll-reveal — sections fade + rise once as they enter the viewport.
-(function(){
-  const els=[...document.querySelectorAll('.section, .markets-strip, .cta-wrap')];
-  els.forEach(e=>e.classList.add('reveal'));
-  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}
-  const io=new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-  },{threshold:0.08,rootMargin:'0px 0px -8% 0px'});
-  els.forEach(e=>io.observe(e));
-})();
-</script>
 </body>
 </html>
