@@ -1,0 +1,26 @@
+name: Deploy landing to Cloudflare
+
+# Static-assets Worker deploy (wrangler.jsonc: name=nexus-landing, assets."."),
+# mirroring how the app repo deploys. Runs on push to main and on manual dispatch.
+# Requires two repo secrets (same values as the nexus-4421 repo):
+#   CF_API_TOKEN     — Cloudflare API token with Workers deploy scope
+#   CF_ACCOUNT_ID    — Cloudflare account id
+# Until those secrets are set the run fails at auth and nothing deploys.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Deploy static assets
+        run: npx --yes wrangler@3 deploy
