@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nexus Trading Labs — plan it, run it, prove it</title>
+  <title>Nexus Trading Labs — Plan it. Run it. Prove it.</title>
   <meta name="description" content="An onchain trading terminal with a public grade. Size a trade, run it yourself or hand it to an agent, and the score comes off public price — the ledger anchored on Arbitrum. Paper first if you want; your keys stay yours. Non-custodial perps, powered by Orderly."/>
-  <meta property="og:title" content="Nexus Trading Labs — plan it, run it, prove it"/>
+  <meta property="og:title" content="Nexus Trading Labs — Plan it. Run it. Prove it."/>
   <meta property="og:description" content="Size a trade, then take it yourself or hand it to an agent. The score comes off public price, not a screenshot, and the ledger is anchored on Arbitrum. Start in paper. Your keys stay yours. Powered by Orderly."/>
   <meta property="og:image" content="https://nexustradinglabs.com/preview.png"/>
   <meta property="og:url" content="https://nexustradinglabs.com"/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Nexus Trading Labs — plan it, run it, prove it"/>
+  <meta name="twitter:title" content="Nexus Trading Labs — Plan it. Run it. Prove it."/>
   <meta name="twitter:description" content="Size a trade, then take it yourself or hand it to an agent. The score comes off public price, not a screenshot, and the ledger is anchored on Arbitrum. Your keys stay yours. Powered by Orderly."/>
   <meta name="twitter:image" content="https://nexustradinglabs.com/preview.png"/>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -144,6 +144,23 @@
       .cta-wrap{margin:0 24px 60px;padding:40px 28px;grid-template-columns:1fr}
       footer{padding:32px 24px;flex-direction:column;gap:24px;align-items:flex-start}
     }
+    /* Centered content column — matches the Lab's width so sections aren't full-bleed */
+    .container{max-width:1080px;margin:0 auto;width:100%}
+    /* Hero: The Nexus Thesis Engine panel (a marketing illustration of the real feature) */
+    .thesis-card{width:100%;max-width:520px;border:1px solid var(--border-strong);border-radius:12px;background:var(--bg2);box-shadow:0 30px 90px rgba(0,0,0,0.55);overflow:hidden;font-family:var(--mono)}
+    .tc-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);background:var(--bg)}
+    .tc-title{font-size:11px;letter-spacing:0.08em;color:var(--text)}
+    .tc-tag{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 7px}
+    .tc-sym{display:flex;align-items:center;gap:12px;padding:16px 18px 8px}
+    .tc-coin{font-family:var(--sans);font-size:18px;font-weight:700;color:var(--text)}
+    .tc-dir{font-size:10px;letter-spacing:0.08em;color:var(--green);border:1px solid rgba(62,207,142,0.35);border-radius:3px;padding:2px 8px}
+    .tc-rr{margin-left:auto;font-size:11px;color:var(--fog)}
+    .tc-rows{padding:6px 18px 14px;display:flex;flex-direction:column}
+    .tc-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:12px}
+    .tc-row:last-child{border-bottom:none}
+    .tc-row span{color:var(--muted);letter-spacing:0.03em}
+    .tc-row b{color:var(--text);font-weight:500;font-variant-numeric:tabular-nums}
+    .tc-foot{padding:12px 18px;border-top:1px solid var(--border);background:var(--bg);font-size:10px;letter-spacing:0.06em;color:var(--fog)}
   </style>
 </head>
 <body>
@@ -151,9 +168,9 @@
 <nav>
   <a href="#top" class="nav-logo">Nexus Trading Labs</a>
   <ul class="nav-links">
-    <li><a href="#terminal">The terminal</a></li>
+    <li><a href="#process">Process</a></li>
     <li><a href="#proof">Proof</a></li>
-    <li><a href="https://trade.nexustradinglabs.com/analyze">X-ray</a></li>
+    <li><a href="https://trade.nexustradinglabs.com/analyze">X-Ray</a></li>
   </ul>
   <a href="https://trade.nexustradinglabs.com/lab" class="nav-cta">Launch The Lab</a>
 </nav>
@@ -163,94 +180,119 @@
   <div class="hero-left">
     <div class="hero-label">Onchain trading terminal &middot; A public grade</div>
     <h1>Plan it. Run it. <em>Prove it.</em></h1>
-    <p class="hero-sub">An onchain trading terminal built on Orderly. Plan a trade with real risk math, read the market with live intel, and run it yourself or with an agent. Every call is graded from public price &mdash; not a screenshot.</p>
+    <p class="hero-sub">An onchain trading terminal built on Orderly. Plan a trade with real risk math, read the market with live intel, and run it yourself or with an agent. Every call is graded from public price, not a screenshot.</p>
     <div class="hero-actions">
       <a href="https://trade.nexustradinglabs.com/lab" class="btn-primary">Launch The Lab</a>
       <a href="#proof" class="btn-secondary">See the proof &rarr;</a>
     </div>
   </div>
   <div class="hero-right">
-    <div style="width:100%;max-width:540px;border:1px solid var(--border-strong);border-radius:12px;overflow:hidden;background:#000;box-shadow:0 30px 90px rgba(0,0,0,0.55)">
-      <video src="lab-demo.mp4" autoplay muted loop playsinline preload="metadata" poster="preview.png" style="width:100%;display:block"></video>
+    <div class="thesis-card">
+      <div class="tc-head">
+        <span class="tc-title">The Nexus Thesis Engine</span>
+        <span class="tc-tag">Example</span>
+      </div>
+      <div class="tc-sym">
+        <span class="tc-coin">BTC-PERP</span>
+        <span class="tc-dir">LONG</span>
+        <span class="tc-rr">R : R&nbsp;&nbsp;3.1</span>
+      </div>
+      <div class="tc-rows">
+        <div class="tc-row"><span>Entry</span><b>63,200</b></div>
+        <div class="tc-row"><span>Stop</span><b>61,800</b></div>
+        <div class="tc-row"><span>Target</span><b>67,500</b></div>
+        <div class="tc-row"><span>Size</span><b>0.40 BTC</b></div>
+        <div class="tc-row"><span>Funding (8h)</span><b>&minus;0.011%</b></div>
+        <div class="tc-row"><span>Max risk</span><b>1.0R&nbsp;&middot;&nbsp;$560</b></div>
+      </div>
+      <div class="tc-foot">&#9670;&nbsp;&nbsp;Publish &rarr; timestamped on-chain</div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════ THE PROCESS ═ -->
 <section class="section section-alt" id="process">
-  <div class="section-label">The process</div>
-  <h2 class="section-title">A full trade, from idea to grade.</h2>
-  <div class="grid3">
-    <div class="card">
-      <div class="card-num">01</div>
-      <div class="card-title">Plan</div>
-      <p class="card-desc">Lay out the trade in The Nexus Thesis Engine &mdash; entry, stop, targets, size. Publish it if you want a timestamp you can&rsquo;t backdate.</p>
-    </div>
-    <div class="card">
-      <div class="card-num">02</div>
-      <div class="card-title">Run</div>
-      <p class="card-desc">Take the trade yourself, or hand it to an agent with your rules. Paper first. Live when you say so.</p>
-    </div>
-    <div class="card">
-      <div class="card-num">03</div>
-      <div class="card-title">Prove</div>
-      <p class="card-desc">Calls and live agents are graded from public price. The ledger sits on Arbitrum. You can open the contract and look.</p>
+  <div class="container">
+    <div class="section-label">The process</div>
+    <h2 class="section-title">A full trade, from idea to grade.</h2>
+    <div class="grid3">
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-title">Plan</div>
+        <p class="card-desc">Lay out the trade in The Nexus Thesis Engine &mdash; entry, stop, targets, size. Publish it if you want a timestamp you can&rsquo;t backdate.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-title">Run</div>
+        <p class="card-desc">Take the trade yourself, or hand it to an agent with your rules. Paper first. Live when you say so.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-title">Prove</div>
+        <p class="card-desc">Calls and live agents are graded from public price. The ledger sits on Arbitrum. You can open the contract and look.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════ THE TERMINAL ═ -->
 <section class="section" id="terminal">
-  <div class="section-label">The terminal</div>
-  <h2 class="section-title">A complete trading terminal, built on Orderly.</h2>
-  <p class="lab-intro">130+ perpetual markets underneath &mdash; and the full workflow on top: planning, live market intel, an AI copilot, optional automation, and a public track record.</p>
-  <div class="grid3">
-    <div class="card">
-      <div class="card-title">The Nexus Thesis Engine</div>
-      <p class="card-desc">Size every trade with real risk math &mdash; entry, stop, targets by R-multiple, funding cost, and live P&amp;L. Publish a thesis and it is registered on-chain as a timestamped call.</p>
-    </div>
-    <div class="card">
-      <div class="card-title">Market Intel &amp; The Read</div>
-      <p class="card-desc">Live market regime, funding and open interest, and where the smart money is positioned &mdash; the same signals the desk trades on, surfaced for you to read the tape.</p>
-    </div>
-    <div class="card">
-      <div class="card-title">Nexus AI</div>
-      <p class="card-desc">A copilot that reads your actual book &mdash; your positions, your record, the live leaderboards &mdash; and drafts a sized thesis. Bring your own key; it runs in your browser.</p>
-    </div>
-    <div class="card">
-      <div class="card-title">Wallet X-Ray</div>
-      <p class="card-desc">Grade any wallet&rsquo;s real perp record from public settlement, with no login. A consistency score that separates a lucky run from a durable edge.</p>
-    </div>
-    <div class="card">
-      <div class="card-title">Autonomous agent</div>
-      <p class="card-desc">Optional: hand your rules to an agent that trades within hard limits. Start in paper, go live when you choose, with order-only keys and a kill switch.</p>
-    </div>
-    <div class="card">
-      <div class="card-title">Copy &amp; Feed</div>
-      <p class="card-desc">A live feed of on-chain calls, one-tap copy of graded traders, and encrypted wallet-to-wallet messaging. Follow the record, not the noise.</p>
+  <div class="container">
+    <div class="section-label">The terminal</div>
+    <h2 class="section-title">A complete trading terminal, built on Orderly.</h2>
+    <p class="lab-intro">130+ perpetual markets underneath &mdash; and the full workflow on top: planning, live market intel, an AI copilot, optional automation, and a public track record.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="card-title">The Nexus Thesis Engine</div>
+        <p class="card-desc">Size every trade with real risk math &mdash; entry, stop, targets by R-multiple, funding cost, and live P&amp;L. Publish a thesis and it is registered on-chain as a timestamped call.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Market Intel &amp; The Read</div>
+        <p class="card-desc">Live market regime, funding and open interest, and where the smart money is positioned &mdash; the same signals the desk trades on, surfaced for you to read the tape.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Nexus AI</div>
+        <p class="card-desc">A copilot that reads your actual book &mdash; your positions, your record, the live leaderboards &mdash; and drafts a sized thesis. Bring your own key; it runs in your browser.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Wallet X-Ray</div>
+        <p class="card-desc">Grade any wallet&rsquo;s real perp record from public settlement, with no login. A consistency score that separates a lucky run from a durable edge.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Autonomous agent</div>
+        <p class="card-desc">Optional: hand your rules to an agent that trades within hard limits. Start in paper, go live when you choose, with order-only keys and a kill switch.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Copy &amp; Feed</div>
+        <p class="card-desc">A live feed of on-chain calls, one-tap copy of graded traders, and encrypted wallet-to-wallet messaging. Follow the record, not the noise.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════ PROOF ═════ -->
 <section class="section section-alt" id="proof">
-  <div class="section-label">Proof</div>
-  <h2 class="section-title">See how we keep score.</h2>
-  <div class="trust-callout" style="border-left-color:var(--fog);max-width:820px">
-    <span class="trust-icon" style="color:var(--fog)">&#9670;</span>
-    <span>We grade every call from public price &mdash; traders and agents alike, first touch of target versus stop. Regime-Gated Invert is our current lead: walk-forward only, small sample, not live-proven. The board is real settled trades; paper is separate. Verify on Arbitrum if you want the raw record.</span>
-  </div>
-  <div class="hero-actions">
-    <a href="https://trade.nexustradinglabs.com/proof" class="btn-primary">See the proof</a>
-    <a href="https://arbiscan.io/address/0x57a698df84a44F3dA3dac3E08CA455a55A4eff84" target="_blank" rel="noopener" class="btn-secondary">Verify on Arbitrum &rarr;</a>
+  <div class="container">
+    <div class="section-label">Proof</div>
+    <h2 class="section-title">See how we keep score.</h2>
+    <div class="trust-callout" style="border-left-color:var(--fog);max-width:820px">
+      <span class="trust-icon" style="color:var(--fog)">&#9670;</span>
+      <span>We grade every call from public price &mdash; traders and agents alike, first touch of target versus stop. Regime-Gated Invert is our current lead: walk-forward only, small sample, not live-proven. The board is real settled trades; paper is separate. Verify on Arbitrum if you want the raw record.</span>
+    </div>
+    <div class="hero-actions">
+      <a href="https://trade.nexustradinglabs.com/proof" class="btn-primary">See the proof</a>
+      <a href="https://arbiscan.io/address/0x57a698df84a44F3dA3dac3E08CA455a55A4eff84" target="_blank" rel="noopener" class="btn-secondary">Verify on Arbitrum &rarr;</a>
+    </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════ TRUST ════ -->
 <section class="section" style="padding-top:64px;padding-bottom:64px">
-  <div class="trust-callout" style="border-left-color:var(--green);max-width:820px;margin:0 auto">
-    <span class="trust-icon" style="color:var(--green)">&#9679;</span>
-    <span><strong>Your keys, your call.</strong> Nexus is non-custodial from end to end &mdash; your funds never leave your wallet. If you automate, the agent&rsquo;s key can only place orders, never withdraw, with hard caps and a one-tap kill. You are always in control.</span>
+  <div class="container">
+    <div class="trust-callout" style="border-left-color:var(--green);max-width:820px;margin:0 auto">
+      <span class="trust-icon" style="color:var(--green)">&#9679;</span>
+      <span><strong>Your keys, your call.</strong> Nexus is non-custodial from end to end &mdash; your funds never leave your wallet. If you automate, the agent&rsquo;s key can only place orders, never withdraw, with hard caps and a one-tap kill. You are always in control.</span>
+    </div>
   </div>
 </section>
 
@@ -270,7 +312,7 @@
   <ul class="footer-links">
     <li><a href="https://trade.nexustradinglabs.com/lab">Launch The Lab</a></li>
     <li><a href="https://trade.nexustradinglabs.com/proof">Proof</a></li>
-    <li><a href="https://trade.nexustradinglabs.com/analyze">X-ray a wallet</a></li>
+    <li><a href="https://trade.nexustradinglabs.com/analyze">X-Ray a wallet</a></li>
     <li><a href="https://trade.nexustradinglabs.com/feed">Feed</a></li>
   </ul>
 </footer>
