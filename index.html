@@ -146,21 +146,6 @@
     }
     /* Centered content column — matches the Lab's width so sections aren't full-bleed */
     .container{max-width:1080px;margin:0 auto;width:100%}
-    /* Hero: The Nexus Thesis Engine panel (a marketing illustration of the real feature) */
-    .thesis-card{width:100%;max-width:520px;border:1px solid var(--border-strong);border-radius:12px;background:var(--bg2);box-shadow:0 30px 90px rgba(0,0,0,0.55);overflow:hidden;font-family:var(--mono)}
-    .tc-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);background:var(--bg)}
-    .tc-title{font-size:11px;letter-spacing:0.08em;color:var(--text)}
-    .tc-tag{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 7px}
-    .tc-sym{display:flex;align-items:center;gap:12px;padding:16px 18px 8px}
-    .tc-coin{font-family:var(--sans);font-size:18px;font-weight:700;color:var(--text)}
-    .tc-dir{font-size:10px;letter-spacing:0.08em;color:var(--green);border:1px solid rgba(62,207,142,0.35);border-radius:3px;padding:2px 8px}
-    .tc-rr{margin-left:auto;font-size:11px;color:var(--fog)}
-    .tc-rows{padding:6px 18px 14px;display:flex;flex-direction:column}
-    .tc-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:12px}
-    .tc-row:last-child{border-bottom:none}
-    .tc-row span{color:var(--muted);letter-spacing:0.03em}
-    .tc-row b{color:var(--text);font-weight:500;font-variant-numeric:tabular-nums}
-    .tc-foot{padding:12px 18px;border-top:1px solid var(--border);background:var(--bg);font-size:10px;letter-spacing:0.06em;color:var(--fog)}
   </style>
 </head>
 <body>
@@ -175,37 +160,51 @@
   <a href="https://trade.nexustradinglabs.com/lab" class="nav-cta">Launch The Lab</a>
 </nav>
 
+<!-- ═══════════════════════════════════════ TICKER ═══ -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker-track">
+    <div class="ticker-item"><span class="sym">Loading markets&hellip;</span></div>
+  </div>
+</div>
+
 <!-- ═══════════════════════════════════════ HERO ══════ -->
-<section class="hero" id="top" style="margin-top:60px">
+<section class="hero" id="top">
   <div class="hero-left">
     <div class="hero-label">Onchain trading terminal &middot; A public grade</div>
     <h1>Plan it. Run it. <em>Prove it.</em></h1>
-    <p class="hero-sub">An onchain trading terminal built on Orderly. Plan a trade with real risk math, read the market with live intel, and run it yourself or with an agent. Every call is graded from public price, not a screenshot.</p>
+    <p class="hero-sub">An onchain trading terminal built on Orderly. Read the market with live intelligence, plan a trade with real risk math, and run it yourself or with an agent. Every call is graded from public price, not a screenshot.</p>
     <div class="hero-actions">
       <a href="https://trade.nexustradinglabs.com/lab" class="btn-primary">Launch The Lab</a>
       <a href="#proof" class="btn-secondary">See the proof &rarr;</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="thesis-card">
-      <div class="tc-head">
-        <span class="tc-title">The Nexus Thesis Engine</span>
-        <span class="tc-tag">Example</span>
+    <div class="stats-panel">
+      <div class="stats-header">
+        <span>Platform Overview</span>
+        <span class="live-dot">LIVE</span>
       </div>
-      <div class="tc-sym">
-        <span class="tc-coin">BTC-PERP</span>
-        <span class="tc-dir">LONG</span>
-        <span class="tc-rr">R : R&nbsp;&nbsp;3.1</span>
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-label">24h Volume</div>
+          <div class="stat-value" id="stat-vol"><span class="skel" style="width:74px;height:20px"></span></div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-label">Open Interest</div>
+          <div class="stat-value" id="stat-oi"><span class="skel" style="width:74px;height:20px"></span></div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-label">Markets</div>
+          <div class="stat-value" id="stat-mkts"><span class="skel" style="width:56px;height:20px"></span></div>
+        </div>
       </div>
-      <div class="tc-rows">
-        <div class="tc-row"><span>Entry</span><b>63,200</b></div>
-        <div class="tc-row"><span>Stop</span><b>61,800</b></div>
-        <div class="tc-row"><span>Target</span><b>67,500</b></div>
-        <div class="tc-row"><span>Size</span><b>0.40 BTC</b></div>
-        <div class="tc-row"><span>Funding (8h)</span><b>&minus;0.011%</b></div>
-        <div class="tc-row"><span>Max risk</span><b>1.0R&nbsp;&middot;&nbsp;$560</b></div>
+      <div class="stats-markets" id="hero-markets">
+        <div class="market-row"><span class="skel" style="width:74px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:46px"></span></div>
+        <div class="market-row"><span class="skel" style="width:66px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:44px"></span></div>
+        <div class="market-row"><span class="skel" style="width:70px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:42px"></span></div>
+        <div class="market-row"><span class="skel" style="width:62px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:48px"></span></div>
+        <div class="market-row"><span class="skel" style="width:72px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:44px"></span></div>
       </div>
-      <div class="tc-foot">&#9670;&nbsp;&nbsp;Publish &rarr; timestamped on-chain</div>
     </div>
   </div>
 </section>
@@ -218,8 +217,8 @@
     <div class="grid3">
       <div class="card">
         <div class="card-num">01</div>
-        <div class="card-title">Plan</div>
-        <p class="card-desc">Lay out the trade in The Nexus Thesis Engine &mdash; entry, stop, targets, size. Publish it if you want a timestamp you can&rsquo;t backdate.</p>
+        <div class="card-title">Read &amp; plan</div>
+        <p class="card-desc">Start with live market intelligence &mdash; regime, funding, open interest, and where the smart money sits. Then lay out the trade in The Nexus Thesis Engine: entry, stop, targets, size.</p>
       </div>
       <div class="card">
         <div class="card-num">02</div>
@@ -239,16 +238,16 @@
 <section class="section" id="terminal">
   <div class="container">
     <div class="section-label">The terminal</div>
-    <h2 class="section-title">A complete trading terminal, built on Orderly.</h2>
-    <p class="lab-intro">130+ perpetual markets underneath &mdash; and the full workflow on top: planning, live market intel, an AI copilot, optional automation, and a public track record.</p>
+    <h2 class="section-title">Everything you need to read the market and act on it.</h2>
+    <p class="lab-intro">130+ perpetual markets on Orderly, and the full workflow on top: intelligence, planning, an AI copilot, optional automation, and a public track record.</p>
     <div class="grid3">
+      <div class="card">
+        <div class="card-title">Market Intelligence &amp; The Read</div>
+        <p class="card-desc">Live regime, funding and open interest, and where the smart money is actually positioned. <strong style="color:var(--text)">The Read</strong> fuses crowd positioning with real smart-money flow &mdash; the edge the desk trades on, surfaced for you.</p>
+      </div>
       <div class="card">
         <div class="card-title">The Nexus Thesis Engine</div>
         <p class="card-desc">Size every trade with real risk math &mdash; entry, stop, targets by R-multiple, funding cost, and live P&amp;L. Publish a thesis and it is registered on-chain as a timestamped call.</p>
-      </div>
-      <div class="card">
-        <div class="card-title">Market Intel &amp; The Read</div>
-        <p class="card-desc">Live market regime, funding and open interest, and where the smart money is positioned &mdash; the same signals the desk trades on, surfaced for you to read the tape.</p>
       </div>
       <div class="card">
         <div class="card-title">Nexus AI</div>
@@ -316,6 +315,25 @@
     <li><a href="https://trade.nexustradinglabs.com/feed">Feed</a></li>
   </ul>
 </footer>
+
+<script>
+// Live Orderly market data via the public proxy worker — 24h volume, open interest,
+// market count, top markets, and the ticker. Real numbers; fail-soft to skeletons.
+const PROXY='https://orderly-proxy.stephenpatrick24.workers.dev';
+function fmtPct(n){if(n===null||n===undefined)return'&mdash;';return(n>=0?'+':'')+n.toFixed(2)+'%';}
+function fmtPrice(n){n=parseFloat(n);if(!n)return'&mdash;';if(n>=1000)return'$'+n.toLocaleString('en-US',{maximumFractionDigits:0});if(n>=1)return'$'+n.toFixed(2);return'$'+n.toPrecision(4);}
+function fmtM(n){if(!n)return'&mdash;';const m=n/1e6;if(m>=1000)return'$'+(n/1e9).toFixed(1)+'<span>B</span>';if(m>=1)return'$'+m.toFixed(1)+'<span>M</span>';return'$'+(n/1e3).toFixed(0)+'<span>K</span>';}
+function calcChange(m){const o=parseFloat(m['24h_open']),c=parseFloat(m['24h_close']);if(!o||!c||o===0)return 0;const p=((c-o)/o)*100;return Math.abs(p)>25?0:p;}
+const LEV={};
+async function fetchLeverage(){try{const r=await fetch('https://api.orderly.org/v1/public/info',{headers:{Accept:'application/json'}});const j=await r.json();(j.data?.rows||[]).forEach(m=>{const imr=parseFloat(m.base_imr);if(imr>0)LEV[m.symbol]=Math.round(1/imr);});}catch(e){}}
+function calcLev(m){if(LEV[m.symbol])return LEV[m.symbol];if(m.max_leverage&&m.max_leverage>0)return m.max_leverage;return null;}
+async function fetchData(){try{const res=await fetch(PROXY);const json=await res.json();return json.data?.rows||[];}catch(e){return[];}}
+function renderTicker(ms){const el=document.getElementById('ticker-track');if(!el||!ms.length)return;const items=ms.slice(0,20).map(m=>{const sym=m.symbol.replace('PERP_','').replace('_USDC','/USDC');const chg=calcChange(m);return`<div class="ticker-item"><span class="sym">${sym}</span><span class="price">${fmtPrice(m.mark_price)}</span><span class="${chg>=0?'up':'dn'}">${fmtPct(chg)}</span></div>`;}).join('');el.innerHTML=items+items;}
+function renderStats(ms){const vol=ms.reduce((s,m)=>s+(parseFloat(m['24h_amount'])||0),0);const oi=ms.reduce((s,m)=>s+(parseFloat(m.open_interest)||0),0);const v=document.getElementById('stat-vol'),o=document.getElementById('stat-oi'),mk=document.getElementById('stat-mkts');if(v)v.innerHTML=fmtM(vol);if(o)o.innerHTML=fmtM(oi);if(mk)mk.innerHTML=(Math.floor(ms.length/10)*10)+'<span>+</span>';}
+function renderHero(ms){const el=document.getElementById('hero-markets');if(!el||!ms.length)return;el.innerHTML=ms.slice(0,5).map(m=>{const sym=m.symbol.replace('PERP_','').replace('_USDC','-PERP');const chg=calcChange(m);const lev=calcLev(m);return`<div class="market-row"><span class="market-name">${sym}</span><span class="market-lev">${lev?lev+'x':'&mdash;'}</span><span class="${chg>=0?'up':'dn'}">${fmtPct(chg)}</span></div>`;}).join('');}
+async function refresh(){const ms=await fetchData();if(Object.keys(LEV).length===0)fetchLeverage();if(!ms.length)return;ms.sort((a,b)=>(parseFloat(b['24h_amount'])||0)-(parseFloat(a['24h_amount'])||0));renderTicker(ms);renderStats(ms);renderHero(ms);}
+refresh();setInterval(refresh,30000);
+</script>
 
 </body>
 </html>
