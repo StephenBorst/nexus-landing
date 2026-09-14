@@ -34,7 +34,7 @@
     @media(max-width:900px){.nav-links{display:none}}
     .nav-cta:hover{background:#ffffff}
     .ticker{position:relative;overflow:hidden;background:var(--bg2);border-bottom:1px solid var(--border);height:36px;margin-top:60px;display:flex;align-items:center}
-    .ticker-track{display:flex;animation:ticker 80s linear infinite;white-space:nowrap}
+    .ticker-track{display:flex;animation:ticker 45s linear infinite;white-space:nowrap}
     .ticker-item{display:flex;align-items:center;gap:8px;padding:0 24px;font-size:11px;border-right:1px solid var(--border)}
     .ticker-item .sym{color:var(--text);font-weight:500}
     .ticker-item .price{color:var(--muted)}
@@ -127,7 +127,20 @@
     .trust-callout strong{color:var(--text);font-weight:600}
     /* Leaderboard badge */
     .onchain-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--fog);border:1px solid var(--border-strong);border-radius:4px;padding:4px 10px;margin-bottom:8px}
+    /* FAQ — stacked Q&A rows in the card material */
+    .faq-list{border:1px solid var(--border);border-radius:10px;overflow:hidden}
+    .faq-item{padding:26px 30px;border-bottom:1px solid var(--border);background:var(--bg2)}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-family:var(--sans);font-size:16px;font-weight:700;color:var(--text);margin-bottom:10px}
+    .faq-a{font-family:var(--sans);font-size:13px;line-height:1.7;color:var(--fog)}
+    .faq-a a{color:var(--accent);text-decoration:none}
+    .faq-a a:hover{color:#fff}
+    /* Footer legal/disclaimer line */
+    .footer-legal{margin-top:14px;font-size:10px;color:var(--muted);line-height:1.7}
+    .footer-legal a{color:var(--muted);text-decoration:none}
+    .footer-legal a:hover{color:var(--text)}
     @media(max-width:900px){
+      .faq-item{padding:20px 20px}
       nav{padding:0 20px}
       .nav-logo{font-size:16px;letter-spacing:0.02em}
       .hero{grid-template-columns:1fr;min-height:auto}
@@ -155,7 +168,9 @@
   <ul class="nav-links">
     <li><a href="#process">Process</a></li>
     <li><a href="#proof">Proof</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="https://trade.nexustradinglabs.com/analyze">X-Ray</a></li>
+    <li><a href="https://orderly.network/docs" target="_blank" rel="noopener">Docs</a></li>
   </ul>
   <a href="https://trade.nexustradinglabs.com/lab" class="nav-cta">Launch The Lab</a>
 </nav>
@@ -299,6 +314,44 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ FAQ ══════ -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Questions, answered.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">What is Nexus Trading Labs?</div>
+        <p class="faq-a">An on-chain trading terminal built on <a href="https://orderly.network/docs" target="_blank" rel="noopener">Orderly Network &#8599;</a>. Read the market with live intelligence, size a trade with real risk math in The Nexus Thesis Engine, then run it yourself or hand it to an autonomous agent &mdash; and every call is graded from public price, not a screenshot.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you ever hold my funds or keys?</div>
+        <p class="faq-a">Never. Nexus is non-custodial end to end &mdash; you trade from your own wallet and settlement happens on Orderly&rsquo;s on-chain infrastructure. If you automate, the agent gets an <strong style="color:var(--text)">order-only key</strong> that can place trades but can never withdraw.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need an account or KYC?</div>
+        <p class="faq-a">No. Connect a wallet and you&rsquo;re in &mdash; no sign-up, no KYC. You can explore every public board (the feed, leaderboards, wallet x-ray) before connecting anything.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What does &ldquo;graded from public price&rdquo; mean?</div>
+        <p class="faq-a">Every thesis and every agent trade is scored objectively from public market price &mdash; first touch of target vs. stop &mdash; not a self-reported screenshot. The track-record ledger is hashed and anchored on Arbitrum, so anyone can recompute and verify it. A record you can&rsquo;t fake.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I try it without risking money?</div>
+        <p class="faq-a">Yes &mdash; start in paper mode. The full workflow and the agent run on simulated fills with zero funds at risk. Go live only when you decide to.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is the autonomous agent safe to run?</div>
+        <p class="faq-a">It trades your rules inside hard limits &mdash; a daily-loss cap, a max trades-per-day, and a one-tap kill switch. Its key is order-only (trade, never withdraw), and you can pause or stop it anytime. Start in paper; go live on your terms.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is $NEXUS?</div>
+        <p class="faq-a">A community token on Base. It unlocks cosmetic and access perks only &mdash; no yield, no revenue share, no dividends. Nexus PRO is a straightforward software subscription; $NEXUS is not an investment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════ FOOTER ══ -->
 <footer>
   <div class="footer-left">
@@ -311,12 +364,19 @@
       <a href="https://app.safe.global/balances?safe=base:0x4Fe2c01bbeFaFFa35706C994646a3F8493B1C733" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">Treasury Safe &#8599;</a>
       <span style="display:block;margin-top:4px;color:#3a3a40">A community meme token &mdash; access and cosmetics only. No yield, no revenue share.</span>
     </div>
+    <div class="footer-legal">
+      Non-custodial &middot; Not investment advice &middot; Perpetual trading carries substantial risk of loss.<br>
+      &copy; 2026 Nexus Trading Labs &middot; Built on <a href="https://orderly.network/docs" target="_blank" rel="noopener">Orderly Network &#8599;</a>
+    </div>
   </div>
   <ul class="footer-links">
     <li><a href="https://trade.nexustradinglabs.com/lab">Launch The Lab</a></li>
     <li><a href="https://trade.nexustradinglabs.com/proof">Proof</a></li>
     <li><a href="https://trade.nexustradinglabs.com/analyze">X-Ray a wallet</a></li>
     <li><a href="https://trade.nexustradinglabs.com/feed">Feed</a></li>
+    <li><a href="https://orderly.network/docs" target="_blank" rel="noopener">Docs &#8599;</a></li>
+    <li><a href="https://orderly.network/docs/introduction/terms-of-service" target="_blank" rel="noopener">Terms &#8599;</a></li>
+    <li><a href="https://orderly.network/docs/introduction/privacy-policy" target="_blank" rel="noopener">Privacy &#8599;</a></li>
   </ul>
 </footer>
 
