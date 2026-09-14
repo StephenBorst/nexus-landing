@@ -34,7 +34,7 @@
     @media(max-width:900px){.nav-links{display:none}}
     .nav-cta:hover{background:#ffffff}
     .ticker{position:relative;overflow:hidden;background:var(--bg2);border-bottom:1px solid var(--border);height:36px;margin-top:60px;display:flex;align-items:center}
-    .ticker-track{display:flex;animation:ticker 45s linear infinite;white-space:nowrap}
+    .ticker-track{display:flex;animation:ticker 80s linear infinite;white-space:nowrap}
     .ticker-item{display:flex;align-items:center;gap:8px;padding:0 24px;font-size:11px;border-right:1px solid var(--border)}
     .ticker-item .sym{color:var(--text);font-weight:500}
     .ticker-item .price{color:var(--muted)}
@@ -111,14 +111,24 @@
     .cta-title{font-family:var(--serif);font-size:clamp(24px,2.5vw,36px);font-weight:700;letter-spacing:-0.015em;line-height:1.15;margin-bottom:14px;color:var(--text)}
     .cta-sub{font-family:var(--sans);font-size:14px;color:var(--muted);line-height:1.6}
     .center{text-align:center;margin-top:40px}
-    footer{border-top:1px solid var(--border);padding:40px 80px;display:flex;align-items:center;justify-content:space-between}
-    .footer-logo{font-family:var(--sans);font-weight:800;font-size:14px;letter-spacing:0.05em;text-transform:uppercase;color:var(--text);margin-bottom:6px}
-    .footer-left{font-size:12px;color:var(--muted)}
-    .footer-links{display:flex;flex-wrap:wrap;gap:16px 24px;list-style:none}
-    .footer-links a{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none}
-    .footer-links a:hover{color:var(--text)}
-    .footer-badge{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:6px}
-    .footer-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+    footer{border-top:1px solid var(--border);padding:64px 80px 36px}
+    .footer-top{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1fr;gap:40px}
+    .footer-brand{max-width:300px}
+    .footer-logo{font-family:var(--sans);font-weight:800;font-size:16px;letter-spacing:0.05em;text-transform:uppercase;color:var(--text);margin-bottom:12px}
+    .footer-tag{font-family:var(--sans);font-size:12px;line-height:1.65;color:var(--muted);margin-bottom:22px}
+    .footer-socials{display:flex;gap:10px}
+    .footer-socials a{width:34px;height:34px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:color .2s,border-color .2s;text-decoration:none}
+    .footer-socials a:hover{color:var(--text);border-color:var(--border-strong)}
+    .footer-socials svg{width:15px;height:15px;fill:currentColor}
+    .footer-col h4{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:18px;font-weight:400}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .footer-col a{font-family:var(--sans);font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
+    .footer-col a:hover{color:var(--text)}
+    .footer-bottom{border-top:1px solid var(--border);margin-top:48px;padding-top:28px;text-align:center}
+    .footer-bottom .fb-copy{font-family:var(--sans);font-size:12px;color:var(--fog);margin-bottom:8px}
+    .footer-bottom .fb-copy a{color:var(--fog);text-decoration:none}
+    .footer-bottom .fb-copy a:hover{color:var(--text)}
+    .footer-bottom .fb-disc{font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.7;max-width:760px;margin:0 auto}
     /* THE LAB — section intro text */
     .lab-intro{font-family:var(--sans);font-size:15px;line-height:1.7;color:var(--fog);max-width:660px;margin-bottom:56px}
     /* Trust callout strip */
@@ -135,10 +145,6 @@
     .faq-a{font-family:var(--sans);font-size:13px;line-height:1.7;color:var(--fog)}
     .faq-a a{color:var(--accent);text-decoration:none}
     .faq-a a:hover{color:#fff}
-    /* Footer legal/disclaimer line */
-    .footer-legal{margin-top:14px;font-size:10px;color:var(--muted);line-height:1.7}
-    .footer-legal a{color:var(--muted);text-decoration:none}
-    .footer-legal a:hover{color:var(--text)}
     @media(max-width:900px){
       .faq-item{padding:20px 20px}
       nav{padding:0 20px}
@@ -155,7 +161,9 @@
       .markets-table th,.markets-table td{padding:12px 12px;font-size:12px}
       .nx-strip{padding:14px 24px;gap:14px 18px}
       .cta-wrap{margin:0 24px 60px;padding:40px 28px;grid-template-columns:1fr}
-      footer{padding:32px 24px;flex-direction:column;gap:24px;align-items:flex-start}
+      footer{padding:48px 24px 28px}
+      .footer-top{grid-template-columns:1fr 1fr;gap:32px 20px}
+      .footer-brand{grid-column:1 / -1;max-width:100%}
     }
     /* Centered content column — matches the Lab's width so sections aren't full-bleed */
     .container{max-width:1080px;margin:0 auto;width:100%}
@@ -354,30 +362,53 @@
 
 <!-- ═══════════════════════════════════════ FOOTER ══ -->
 <footer>
-  <div class="footer-left">
-    <div class="footer-logo">Nexus Trading Labs</div>
-    <div>Onchain trading terminal. Powered by Orderly.</div>
-    <div style="margin-top:12px;font-size:11px;color:var(--accent-dim);line-height:1.7">
-      $NEXUS on Base &mdash;
-      <a href="https://www.geckoterminal.com/base/tokens/0x3D958634ab725B627919EF8F2Ed59227309fDba3" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">Chart &#8599;</a> &middot;
-      <a href="https://app.uniswap.org/swap?chain=base&amp;inputCurrency=ETH&amp;outputCurrency=0x3D958634ab725B627919EF8F2Ed59227309fDba3" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">Buy &#8599;</a> &middot;
-      <a href="https://app.safe.global/balances?safe=base:0x4Fe2c01bbeFaFFa35706C994646a3F8493B1C733" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">Treasury Safe &#8599;</a>
-      <span style="display:block;margin-top:4px;color:#3a3a40">A community meme token &mdash; access and cosmetics only. No yield, no revenue share.</span>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Nexus Trading Labs</div>
+      <p class="footer-tag">An onchain trading terminal with a public grade. Non-custodial, powered by Orderly.</p>
+      <div class="footer-socials">
+        <a href="https://x.com/nexustradinglab" target="_blank" rel="noopener" aria-label="Nexus on X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
     </div>
-    <div class="footer-legal">
-      Non-custodial &middot; Not investment advice &middot; Perpetual trading carries substantial risk of loss.<br>
-      &copy; 2026 Nexus Trading Labs &middot; Built on <a href="https://orderly.network/docs" target="_blank" rel="noopener">Orderly Network &#8599;</a>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="https://trade.nexustradinglabs.com/lab">The Lab</a></li>
+        <li><a href="https://trade.nexustradinglabs.com/feed">Feed</a></li>
+        <li><a href="https://trade.nexustradinglabs.com/analyze">Wallet X-Ray</a></li>
+        <li><a href="https://trade.nexustradinglabs.com/proof">Proof</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="https://orderly.network/docs" target="_blank" rel="noopener">Docs &#8599;</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://arbiscan.io/address/0x57a698df84a44F3dA3dac3E08CA455a55A4eff84" target="_blank" rel="noopener">Verify Ledger &#8599;</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>$NEXUS</h4>
+      <ul>
+        <li><a href="https://www.geckoterminal.com/base/tokens/0x3D958634ab725B627919EF8F2Ed59227309fDba3" target="_blank" rel="noopener">Chart &#8599;</a></li>
+        <li><a href="https://app.uniswap.org/swap?chain=base&amp;inputCurrency=ETH&amp;outputCurrency=0x3D958634ab725B627919EF8F2Ed59227309fDba3" target="_blank" rel="noopener">Buy &#8599;</a></li>
+        <li><a href="https://app.safe.global/balances?safe=base:0x4Fe2c01bbeFaFFa35706C994646a3F8493B1C733" target="_blank" rel="noopener">Treasury &#8599;</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="https://orderly.network/docs/introduction/terms-of-service" target="_blank" rel="noopener">Terms of Service &#8599;</a></li>
+        <li><a href="https://orderly.network/docs/introduction/privacy-policy" target="_blank" rel="noopener">Privacy Policy &#8599;</a></li>
+      </ul>
     </div>
   </div>
-  <ul class="footer-links">
-    <li><a href="https://trade.nexustradinglabs.com/lab">Launch The Lab</a></li>
-    <li><a href="https://trade.nexustradinglabs.com/proof">Proof</a></li>
-    <li><a href="https://trade.nexustradinglabs.com/analyze">X-Ray a wallet</a></li>
-    <li><a href="https://trade.nexustradinglabs.com/feed">Feed</a></li>
-    <li><a href="https://orderly.network/docs" target="_blank" rel="noopener">Docs &#8599;</a></li>
-    <li><a href="https://orderly.network/docs/introduction/terms-of-service" target="_blank" rel="noopener">Terms &#8599;</a></li>
-    <li><a href="https://orderly.network/docs/introduction/privacy-policy" target="_blank" rel="noopener">Privacy &#8599;</a></li>
-  </ul>
+  <div class="footer-bottom">
+    <div class="fb-copy">&copy; 2026 Nexus Trading Labs &middot; Built on <a href="https://orderly.network/docs" target="_blank" rel="noopener">Orderly Network &#8599;</a></div>
+    <div class="fb-disc">Non-custodial &middot; not investment advice &middot; perpetual trading carries substantial risk of loss. $NEXUS is a community token &mdash; access and cosmetics only, with no yield or revenue share.</div>
+  </div>
 </footer>
 
 <script>
