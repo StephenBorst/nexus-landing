@@ -1,0 +1,7 @@
+# Always revalidate the HTML so a fresh deploy shows on the next load
+# (no-cache = the browser may store it but must revalidate via ETag first).
+# Other assets (images, video, fonts) keep normal caching.
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
