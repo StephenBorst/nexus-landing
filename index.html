@@ -117,6 +117,10 @@
     .footer-brand{max-width:300px}
     .footer-logo{font-family:var(--sans);font-weight:800;font-size:16px;letter-spacing:0.05em;text-transform:uppercase;color:var(--text);margin-bottom:12px}
     .footer-tag{font-family:var(--sans);font-size:12px;line-height:1.65;color:var(--muted);margin-bottom:22px}
+    .footer-socials{display:flex;gap:16px;align-items:center}
+    .footer-socials a{color:var(--muted);transition:color .2s;text-decoration:none;display:inline-flex;align-items:center}
+    .footer-socials a:hover{color:var(--text)}
+    .footer-socials svg{width:18px;height:18px;fill:currentColor}
     .footer-col h4{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:18px;font-weight:400}
     .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
     .footer-col a{font-family:var(--sans);font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
@@ -126,9 +130,6 @@
     .footer-bottom .fb-copy a{color:var(--fog);text-decoration:none}
     .footer-bottom .fb-copy a:hover{color:var(--text)}
     .footer-bottom .fb-disc{font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.7;max-width:760px;margin:0 auto}
-    /* Bare X on the copyright row — inherits the row link color (fog → text on hover), no box. */
-    .footer-bottom .fb-x{display:inline-flex;vertical-align:middle}
-    .footer-bottom .fb-x svg{width:18px;height:18px;fill:currentColor}
     /* THE LAB — section intro text */
     .lab-intro{font-family:var(--sans);font-size:15px;line-height:1.7;color:var(--fog);max-width:660px;margin-bottom:56px}
     /* Trust callout strip */
@@ -193,9 +194,9 @@
 <!-- ═══════════════════════════════════════ HERO ══════ -->
 <section class="hero" id="top">
   <div class="hero-left">
-    <div class="hero-label">Onchain trading terminal &middot; Onchain calls</div>
+    <div class="hero-label">Onchain trading terminal &middot; Welcome to The Lab</div>
     <h1>Plan it. Run it. <em>Prove it.</em></h1>
-    <p class="hero-sub">Read the market. Freeze a thesis. Grade it from public price &mdash; not a screenshot.</p>
+    <p class="hero-sub">Intelligence. Planning. Execution. One terminal.</p>
     <div class="hero-actions">
       <a href="https://trade.nexustradinglabs.com/lab" class="btn-primary">Launch The Lab</a>
       <a href="#proof" class="btn-secondary">See the proof &rarr;</a>
@@ -366,6 +367,11 @@
     <div class="footer-brand">
       <div class="footer-logo">Nexus Trading Labs</div>
       <p class="footer-tag">An onchain trading terminal with a public grade. Non-custodial, powered by Orderly.</p>
+      <div class="footer-socials">
+        <a href="https://x.com/nexustradinglab" target="_blank" rel="noopener" aria-label="Nexus on X">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
     </div>
     <div class="footer-col">
       <h4>Product</h4>
@@ -401,7 +407,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="fb-copy">&copy; 2026 Nexus Trading Labs &middot; Built on <a href="https://orderly.network/docs" target="_blank" rel="noopener">Orderly Network &#8599;</a> &middot; <a class="fb-x" href="https://x.com/nexustradinglab" target="_blank" rel="noopener" aria-label="Nexus on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div>
+    <div class="fb-copy">&copy; 2026 Nexus Trading Labs &middot; Built on <a href="https://orderly.network/docs" target="_blank" rel="noopener">Orderly Network &#8599;</a></div>
     <div class="fb-disc">Non-custodial &middot; not investment advice &middot; perpetual trading carries substantial risk of loss. $NEXUS is a community token &mdash; access and cosmetics only, with no yield or revenue share.</div>
   </div>
 </footer>
