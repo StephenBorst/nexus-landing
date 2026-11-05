@@ -57,7 +57,7 @@
     .btn-secondary:hover{color:var(--text)}
     .hero-right{display:flex;align-items:center;justify-content:center;padding:80px 80px 80px 48px;position:relative;z-index:2}
     .stats-panel{width:100%;max-width:420px;border:1px solid var(--border);background:transparent;position:relative;border-radius:12px}
-    .stats-panel::before{content:'Live Stats';position:absolute;top:-11px;left:18px;background:var(--bg);padding:0 10px;font-size:11px;letter-spacing:0.02em;color:var(--fog);font-family:var(--sans);font-weight:600}
+    .stats-panel::before{content:'The record';position:absolute;top:-11px;left:18px;background:var(--bg);padding:0 10px;font-size:11px;letter-spacing:0.02em;color:var(--fog);font-family:var(--sans);font-weight:600}
     .stats-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
     .stats-header span:first-child{font-size:11px;letter-spacing:0.1em;color:var(--muted)}
     .live-dot{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--green)}
@@ -71,6 +71,22 @@
     .stat-value{font-family:var(--sans);font-size:26px;font-weight:700;color:var(--text)}
     .stat-value span{font-size:13px;color:var(--accent);font-family:var(--mono);font-weight:400}
     .stats-markets{border-top:1px solid var(--border)}
+    .rec-head{display:block;padding:18px 20px 16px;border-bottom:1px solid var(--border);text-decoration:none}
+    .rec-title{display:block;font-family:var(--serif);font-size:18px;line-height:1.35;color:var(--text)}
+    .rec-sub{display:block;margin-top:6px;font-size:11px;color:var(--fog)}
+    #record .stats-grid{grid-template-columns:1fr 1fr}
+    #record .stat-cell{border-bottom:none}
+    #record .stat-cell:nth-child(2){border-right:none}
+    #record .stat-label{white-space:nowrap}
+    .rec-last{grid-template-columns:1fr auto;row-gap:4px}
+    .rec-last .market-name{grid-column:1/-1;font-size:10px;letter-spacing:0.08em;text-transform:uppercase}
+    .rec-last a{color:var(--fog);text-decoration:none;font-size:11px}
+    .rec-last a:hover,.rec-foot a:hover{color:var(--text)}
+    .rec-what{color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+    .rec-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 20px;border-top:1px solid var(--border);font-size:10px;color:var(--muted)}
+    .rec-foot b{font-weight:400;color:var(--fog)}
+    .rec-foot b span{font-size:inherit;color:inherit}
+    .rec-foot a{color:var(--fog);text-decoration:none;letter-spacing:0.06em}
     .skel{display:inline-block;height:11px;border-radius:3px;background:linear-gradient(90deg,#17171a 25%,#242428 50%,#17171a 75%);background-size:200% 100%;animation:shimmer 1.5s ease-in-out infinite}
     @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
     /* Scroll-reveal — subtle fade + rise as sections enter view */
@@ -237,31 +253,31 @@
     </div>
   </div>
   <div class="hero-right">
-    <div class="stats-panel">
+    <div class="stats-panel" id="record">
       <div class="stats-header">
-        <span>Platform Overview</span>
-        <span class="live-dot">LIVE</span>
+        <span>Every call scored from public price</span>
+        <span class="live-dot" id="rec-live" style="display:none">LIVE</span>
       </div>
+      <a class="rec-head" id="rec-head" href="https://trade.nexustradinglabs.com/proof">
+        <span class="rec-title" id="rec-title"><span class="skel" style="width:220px;height:16px"></span></span>
+        <span class="rec-sub" id="rec-sub"></span>
+      </a>
       <div class="stats-grid">
         <div class="stat-cell">
-          <div class="stat-label">24h Volume</div>
-          <div class="stat-value" id="stat-vol"><span class="skel" style="width:74px;height:20px"></span></div>
+          <div class="stat-label">Open calls</div>
+          <div class="stat-value" id="rec-open"><span class="skel" style="width:40px;height:20px"></span></div>
         </div>
         <div class="stat-cell">
-          <div class="stat-label">Open Interest</div>
-          <div class="stat-value" id="stat-oi"><span class="skel" style="width:74px;height:20px"></span></div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-label">Markets</div>
-          <div class="stat-value" id="stat-mkts"><span class="skel" style="width:56px;height:20px"></span></div>
+          <div class="stat-label" id="rec-week-label">Graded this week</div>
+          <div class="stat-value" id="rec-week"><span class="skel" style="width:40px;height:20px"></span></div>
         </div>
       </div>
-      <div class="stats-markets" id="hero-markets">
-        <div class="market-row"><span class="skel" style="width:74px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:46px"></span></div>
-        <div class="market-row"><span class="skel" style="width:66px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:44px"></span></div>
-        <div class="market-row"><span class="skel" style="width:70px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:42px"></span></div>
-        <div class="market-row"><span class="skel" style="width:62px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:48px"></span></div>
-        <div class="market-row"><span class="skel" style="width:72px"></span><span class="skel" style="width:34px"></span><span class="skel" style="width:44px"></span></div>
+      <div class="stats-markets">
+        <div class="market-row rec-last" id="rec-last"><span class="market-name" style="color:var(--muted)">Last graded</span><span class="skel" style="width:140px"></span></div>
+      </div>
+      <div class="rec-foot">
+        <span><b id="stat-mkts">&mdash;</b> markets &middot; 24h volume <b id="stat-vol">&mdash;</b> &middot; OI <b id="stat-oi">&mdash;</b> on Orderly</span>
+        <a href="https://trade.nexustradinglabs.com/proof">See the record &rarr;</a>
       </div>
     </div>
   </div>
@@ -524,16 +540,46 @@ function bareBase(sym){const m=/^PERP_([^_]+)_USDC(?:_.*)?$/.exec(String(sym||''
 function uniqueByBase(ms){const seen=new Set();return ms.filter(m=>{const b=bareBase(m.symbol);if(seen.has(b))return false;seen.add(b);return true;});}
 function renderTicker(ms){const el=document.getElementById('ticker-track');if(!el||!ms.length)return;el.style.animation='';const items=uniqueByBase(ms).slice(0,20).map(m=>{const base=bareBase(m.symbol);const sym=base+'/USDC';const chg=calcChange(m);return`<div class="ticker-item"><img class="ticker-logo" src="https://oss.orderly.network/static/symbol_logo/${base}.png" alt="" loading="lazy" onerror="this.style.display='none'"><span class="sym">${sym}</span><span class="price">${fmtPrice(m.mark_price)}</span><span class="${chg>=0?'up':'dn'}">${fmtPct(chg)}</span></div>`;}).join('');el.innerHTML=items+items;}
 function renderStats(ms){const vol=ms.reduce((s,m)=>s+(parseFloat(m['24h_amount'])||0),0);const oi=ms.reduce((s,m)=>s+(parseFloat(m.open_interest)||0),0);const v=document.getElementById('stat-vol'),o=document.getElementById('stat-oi'),mk=document.getElementById('stat-mkts');if(v)v.innerHTML=fmtM(vol);if(o)o.innerHTML=fmtM(oi);if(mk)mk.innerHTML=(Math.floor(ms.length/10)*10)+'<span>+</span>';}
-function renderHero(ms){const el=document.getElementById('hero-markets');if(!el||!ms.length)return;el.innerHTML=uniqueByBase(ms).slice(0,5).map(m=>{const sym=bareBase(m.symbol)+'-PERP';const chg=calcChange(m);const lev=calcLev(m);return`<div class="market-row"><span class="market-name">${sym}</span><span class="market-lev">${lev?lev+'x':'&mdash;'}</span><span class="${chg>=0?'up':'dn'}">${fmtPct(chg)}</span></div>`;}).join('');}
 // Fail-soft: if the market fetch fails on FIRST load, never sit on an infinite
 // "Loading markets…" under a green LIVE pip (that's a lie). Show a neutral state;
 // a later successful refresh restores everything. Last-good survives across refreshes
 // because a failed refresh returns without clearing already-rendered rows.
 let loaded=false;
-function failSoft(){const tk=document.getElementById('ticker-track');if(tk){tk.style.animation='none';tk.innerHTML='<div class="ticker-item"><span class="sym" style="color:var(--muted)">Live market data temporarily unavailable</span></div>';}const pip=document.querySelector('.live-dot');if(pip)pip.style.display='none';['stat-vol','stat-oi','stat-mkts'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent='—';});const hm=document.getElementById('hero-markets');if(hm)hm.innerHTML='<div class="market-row"><span class="market-name" style="color:var(--muted)">Markets unavailable right now. Retrying every 30 seconds.</span></div>';}
+function failSoft(){const tk=document.getElementById('ticker-track');if(tk){tk.style.animation='none';tk.innerHTML='<div class="ticker-item"><span class="sym" style="color:var(--muted)">Live market data temporarily unavailable</span></div>';}['stat-vol','stat-oi','stat-mkts'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent='—';});}
 let quickTries=0;
-async function refresh(){const ms=await fetchData();if(Object.keys(LEV).length===0)fetchLeverage();if(!ms.length){if(!loaded){if(quickTries<2){quickTries++;setTimeout(refresh,3000*quickTries);return;}failSoft();}return;}quickTries=0;loaded=true;const pip=document.querySelector('.live-dot');if(pip)pip.style.display='';ms.sort((a,b)=>(parseFloat(b['24h_amount'])||0)-(parseFloat(a['24h_amount'])||0));renderTicker(ms);renderStats(ms);renderHero(ms);}
+async function refresh(){const ms=await fetchData();if(Object.keys(LEV).length===0)fetchLeverage();if(!ms.length){if(!loaded){if(quickTries<2){quickTries++;setTimeout(refresh,3000*quickTries);return;}failSoft();}return;}quickTries=0;loaded=true;ms.sort((a,b)=>(parseFloat(b['24h_amount'])||0)-(parseFloat(a['24h_amount'])||0));renderTicker(ms);renderStats(ms);}
 refresh();setInterval(refresh,30000);
+
+// The record: open calls, graded this week, the last graded call and the /proof headline, from
+// GET /calls/pulse (the app's lab-api; public counts, any origin). Same rule as the app's chip
+// (app/lib/callPulse.mjs pulseLine): real numbers always; a quiet week shows the last grade's age
+// instead of a bare 0. Unreadable = dashes and no claim.
+const PULSE='https://og.nexustradinglabs.com/calls/pulse';
+const APP='https://trade.nexustradinglabs.com';
+const esc=(v)=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function agoShort(at){const ms=Math.max(0,Date.now()-Number(at));if(ms<3600000)return Math.max(1,Math.floor(ms/60000))+'m';if(ms<172800000)return Math.floor(ms/3600000)+'h';return Math.floor(ms/86400000)+'d';}
+function setText(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
+function renderRecord(p){
+  const ok=p&&p.ok&&Number.isFinite(p.open)&&Number.isFinite(p.gradedWeek);
+  const live=document.getElementById('rec-live');if(live)live.style.display=ok?'':'none';
+  if(!ok){setText('rec-title','The public record.');setText('rec-sub','Live counts are unavailable right now.');setText('rec-open','—');setText('rec-week','—');
+    const l=document.getElementById('rec-last');if(l)l.innerHTML='<span class="market-name" style="color:var(--muted)">Record unavailable right now.</span>';return;}
+  const h=p.headline;setText('rec-title',h&&h.title?h.title:'The public record.');setText('rec-sub',h&&h.sub?h.sub:'Open calls and grades, live.');
+  setText('rec-open',String(p.open));
+  if(p.gradedWeek===0&&p.last&&p.last.at>0){setText('rec-week-label','Last graded');setText('rec-week',agoShort(p.last.at)+' ago');}
+  else{setText('rec-week-label','Graded this week');setText('rec-week',String(p.gradedWeek));}
+  const l=document.getElementById('rec-last');if(!l)return;
+  const c=p.last;
+  if(!c){l.innerHTML='<span class="market-name" style="color:var(--muted)">No graded call yet.</span>';return;}
+  const r=Number(c.r);const rTxt=Number.isFinite(r)?`<span class="${r>=0?'up':'dn'}" title="R = the result measured in units of the risk taken (entry to stop).">${r>=0?'+':''}${r.toFixed(2)}R</span>`:'';
+  const path=typeof c.path==='string'&&c.path.startsWith('/feed/thesis/')?c.path:'/proof';
+  l.innerHTML=`<span class="market-name" style="color:var(--muted)">Last graded &middot; ${esc(agoShort(c.at))} ago</span><span class="rec-what">${esc(c.symbol)} ${esc(c.direction)} &middot; ${c.outcome==='WIN'?'Win':'Loss'} ${rTxt}</span><a href="${APP}${esc(path)}">Check it &rarr;</a>`;
+}
+/* A failed refresh keeps the last good read on screen; only a first load that fails shows the dashes. */
+let recLoaded=false;
+async function loadRecord(){const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),8000);let j=null;try{const r=await fetch(PULSE,{signal:ctl.signal,headers:{Accept:'application/json'}});j=r.ok?await r.json():null;}catch(e){j=null;}finally{clearTimeout(t);}
+  const ok=j&&j.ok&&Number.isFinite(j.open);if(ok){recLoaded=true;renderRecord(j);}else if(!recLoaded)renderRecord(null);}
+loadRecord();setInterval(loadRecord,300000);
 </script>
 
 </body>
