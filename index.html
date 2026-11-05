@@ -74,6 +74,8 @@
     .rec-head{display:block;padding:18px 20px 16px;border-bottom:1px solid var(--border);text-decoration:none}
     .rec-title{display:block;font-family:var(--serif);font-size:18px;line-height:1.35;color:var(--text)}
     .rec-sub{display:block;margin-top:6px;font-size:11px;color:var(--fog)}
+    .rec-paper{display:block;margin-top:8px;font-size:12px;color:var(--text)}
+    .rec-paper:empty{display:none}
     #record .stats-grid{grid-template-columns:1fr 1fr}
     #record .stat-cell{border-bottom:none}
     #record .stat-cell:nth-child(2){border-right:none}
@@ -263,6 +265,7 @@
       <a class="rec-head" id="rec-head" href="https://trade.nexustradinglabs.com/proof">
         <span class="rec-title" id="rec-title"><span class="skel" style="width:220px;height:16px"></span></span>
         <span class="rec-sub" id="rec-sub"></span>
+        <span class="rec-paper" id="rec-paper"></span>
       </a>
       <div class="stats-grid">
         <div class="stat-cell">
@@ -576,6 +579,9 @@ function renderRecord(p){
   if(!ok){setText('rec-title','The public record.');setText('rec-sub','Live counts are unavailable right now.');['rec-people-open','rec-engines-open'].forEach(id=>setText(id,'—'));['rec-people-graded','rec-engines-graded'].forEach(id=>setText(id,''));
     const l=document.getElementById('rec-last');if(l)l.innerHTML='<span class="market-name" style="color:var(--muted)">Record unavailable right now.</span>';return;}
   const h=p.headline;setText('rec-title',h&&h.title?h.title:'The public record.');setText('rec-sub',h&&h.sub?h.sub:'People and our engine callers, counted apart.');
+  // A cleared read's paper progress (pulse `signals`): a trade count against the 30-trade gate, never a paper P&L.
+  const sg=(h&&h.cleared&&Array.isArray(p.signals))?p.signals.find(x=>x&&x.paper):null;
+  setText('rec-paper',sg?(sg.paper.trades==null?'On paper: count unread right now.':`On paper: ${sg.paper.trades} of ${sg.paper.target} trades. Nothing is armed.`):'');
   setText('rec-people-open',p.open+' open');setText('rec-people-graded',gradedText(p));
   setText('rec-engines-open',p.engines.open+' open');setText('rec-engines-graded',gradedText(p.engines));
   const l=document.getElementById('rec-last');if(!l)return;
