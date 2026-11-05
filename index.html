@@ -78,6 +78,8 @@
     #record .stat-cell{border-bottom:none}
     #record .stat-cell:nth-child(2){border-right:none}
     #record .stat-label{white-space:nowrap}
+    .rec-cellsub{margin-top:6px;font-size:11px;color:var(--fog)}
+    .rec-tag{font-size:9px;letter-spacing:0.1em;color:var(--fog);border:1px solid var(--border-strong);border-radius:3px;padding:0 4px;margin-left:6px}
     .rec-last{grid-template-columns:1fr auto;row-gap:4px}
     .rec-last .market-name{grid-column:1/-1;font-size:10px;letter-spacing:0.08em;text-transform:uppercase}
     .rec-last a{color:var(--fog);text-decoration:none;font-size:11px}
@@ -264,12 +266,14 @@
       </a>
       <div class="stats-grid">
         <div class="stat-cell">
-          <div class="stat-label">Open calls</div>
-          <div class="stat-value" id="rec-open"><span class="skel" style="width:40px;height:20px"></span></div>
+          <div class="stat-label">People</div>
+          <div class="stat-value" id="rec-people-open"><span class="skel" style="width:40px;height:20px"></span></div>
+          <div class="rec-cellsub" id="rec-people-graded"></div>
         </div>
         <div class="stat-cell">
-          <div class="stat-label" id="rec-week-label">Graded this week</div>
-          <div class="stat-value" id="rec-week"><span class="skel" style="width:40px;height:20px"></span></div>
+          <div class="stat-label">Our engines</div>
+          <div class="stat-value" id="rec-engines-open"><span class="skel" style="width:40px;height:20px"></span></div>
+          <div class="rec-cellsub" id="rec-engines-graded"></div>
         </div>
       </div>
       <div class="stats-markets">
@@ -552,33 +556,37 @@ refresh();setInterval(refresh,30000);
 
 // The record: open calls, graded this week, the last graded call and the /proof headline, from
 // GET /calls/pulse (the app's lab-api; public counts, any origin). Same rule as the app's chip
-// (app/lib/callPulse.mjs pulseLine): real numbers always; a quiet week shows the last grade's age
-// instead of a bare 0. Unreadable = dashes and no claim.
+// (app/lib/callPulse.mjs): PEOPLE and OUR ENGINES counted apart, never blended; real numbers always; a
+// quiet week shows the last grade's age instead of a bare 0. Unreadable = dashes and no claim. A reply
+// without the `engines` block is the old shape (bots mixed into the top-level numbers): no claim either.
 const PULSE='https://og.nexustradinglabs.com/calls/pulse';
 const APP='https://trade.nexustradinglabs.com';
 const esc=(v)=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function agoShort(at){const ms=Math.max(0,Date.now()-Number(at));if(ms<3600000)return Math.max(1,Math.floor(ms/60000))+'m';if(ms<172800000)return Math.floor(ms/3600000)+'h';return Math.floor(ms/86400000)+'d';}
 function setText(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
+function gradedText(b){return b.gradedWeek===0&&b.last&&b.last.at>0?'last graded '+agoShort(b.last.at)+' ago':b.gradedWeek+' graded this week';}
+const validBlock=(b)=>!!b&&Number.isFinite(b.open)&&Number.isFinite(b.gradedWeek);
 function renderRecord(p){
-  const ok=p&&p.ok&&Number.isFinite(p.open)&&Number.isFinite(p.gradedWeek);
+  const ok=p&&p.ok&&validBlock(p)&&validBlock(p.engines);
   const live=document.getElementById('rec-live');if(live)live.style.display=ok?'':'none';
-  if(!ok){setText('rec-title','The public record.');setText('rec-sub','Live counts are unavailable right now.');setText('rec-open','—');setText('rec-week','—');
+  if(!ok){setText('rec-title','The public record.');setText('rec-sub','Live counts are unavailable right now.');['rec-people-open','rec-engines-open'].forEach(id=>setText(id,'—'));['rec-people-graded','rec-engines-graded'].forEach(id=>setText(id,''));
     const l=document.getElementById('rec-last');if(l)l.innerHTML='<span class="market-name" style="color:var(--muted)">Record unavailable right now.</span>';return;}
-  const h=p.headline;setText('rec-title',h&&h.title?h.title:'The public record.');setText('rec-sub',h&&h.sub?h.sub:'Open calls and grades, live.');
-  setText('rec-open',String(p.open));
-  if(p.gradedWeek===0&&p.last&&p.last.at>0){setText('rec-week-label','Last graded');setText('rec-week',agoShort(p.last.at)+' ago');}
-  else{setText('rec-week-label','Graded this week');setText('rec-week',String(p.gradedWeek));}
+  const h=p.headline;setText('rec-title',h&&h.title?h.title:'The public record.');setText('rec-sub',h&&h.sub?h.sub:'People and our engine callers, counted apart.');
+  setText('rec-people-open',p.open+' open');setText('rec-people-graded',gradedText(p));
+  setText('rec-engines-open',p.engines.open+' open');setText('rec-engines-graded',gradedText(p.engines));
   const l=document.getElementById('rec-last');if(!l)return;
-  const c=p.last;
+  const pick=[p.last,p.engines.last].filter((x)=>x&&x.at>0).sort((a,b)=>b.at-a.at);
+  const c=pick[0];
   if(!c){l.innerHTML='<span class="market-name" style="color:var(--muted)">No graded call yet.</span>';return;}
   const r=Number(c.r);const rTxt=Number.isFinite(r)?`<span class="${r>=0?'up':'dn'}" title="R = the result measured in units of the risk taken (entry to stop).">${r>=0?'+':''}${r.toFixed(2)}R</span>`:'';
   const path=typeof c.path==='string'&&c.path.startsWith('/feed/thesis/')?c.path:'/proof';
-  l.innerHTML=`<span class="market-name" style="color:var(--muted)">Last graded &middot; ${esc(agoShort(c.at))} ago</span><span class="rec-what">${esc(c.symbol)} ${esc(c.direction)} &middot; ${c.outcome==='WIN'?'Win':'Loss'} ${rTxt}</span><a href="${APP}${esc(path)}">Check it &rarr;</a>`;
+  const by=c.caller?` &middot; <span style="text-transform:none">by ${esc(c.caller)}</span>`:'';const tag=c.engine?'<span class="rec-tag">ENGINE</span>':'';
+  l.innerHTML=`<span class="market-name" style="color:var(--muted)">Last graded &middot; ${esc(agoShort(c.at))} ago${by}${tag}</span><span class="rec-what">${esc(c.symbol)} ${esc(c.direction)} &middot; ${c.outcome==='WIN'?'Win':'Loss'} ${rTxt}</span><a href="${APP}${esc(path)}">Check it &rarr;</a>`;
 }
 /* A failed refresh keeps the last good read on screen; only a first load that fails shows the dashes. */
 let recLoaded=false;
 async function loadRecord(){const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),8000);let j=null;try{const r=await fetch(PULSE,{signal:ctl.signal,headers:{Accept:'application/json'}});j=r.ok?await r.json():null;}catch(e){j=null;}finally{clearTimeout(t);}
-  const ok=j&&j.ok&&Number.isFinite(j.open);if(ok){recLoaded=true;renderRecord(j);}else if(!recLoaded)renderRecord(null);}
+  const ok=j&&j.ok&&validBlock(j)&&validBlock(j.engines);if(ok){recLoaded=true;renderRecord(j);}else if(!recLoaded)renderRecord(null);}
 loadRecord();setInterval(loadRecord,300000);
 </script>
 
