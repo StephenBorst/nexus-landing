@@ -91,6 +91,7 @@
     .rec-foot b{font-weight:400;color:var(--fog)}
     .rec-foot b span{font-size:inherit;color:inherit}
     .rec-foot a{color:var(--fog);text-decoration:none;letter-spacing:0.06em}
+    .rec-links{display:flex;gap:16px;flex-wrap:wrap}
     .skel{display:inline-block;height:11px;border-radius:3px;background:linear-gradient(90deg,#17171a 25%,#242428 50%,#17171a 75%);background-size:200% 100%;animation:shimmer 1.5s ease-in-out infinite}
     @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
     /* Scroll-reveal — subtle fade + rise as sections enter view */
@@ -284,7 +285,7 @@
       </div>
       <div class="rec-foot">
         <span><b id="stat-mkts">&mdash;</b> markets &middot; 24h volume <b id="stat-vol">&mdash;</b> &middot; OI <b id="stat-oi">&mdash;</b> on Orderly</span>
-        <a href="https://trade.nexustradinglabs.com/proof">See the record &rarr;</a>
+        <span class="rec-links"><a id="rec-share" href="#" target="_blank" rel="noopener noreferrer" style="display:none">Share on &#120143;</a><a href="https://trade.nexustradinglabs.com/proof">See the record &rarr;</a></span>
       </div>
     </div>
   </div>
@@ -582,6 +583,11 @@ function renderRecord(p){
   // A cleared read's paper progress (pulse `signals`): a trade count against the 30-trade gate, never a paper P&L.
   const sg=(h&&h.cleared&&Array.isArray(p.signals))?p.signals.find(x=>x&&x.paper):null;
   setText('rec-paper',sg?(sg.paper.trades==null?'On paper: count unread right now.':`On paper: ${sg.paper.trades} of ${sg.paper.target} trades. Nothing is armed.`):'');
+  // Share: an X post linking the record card (og.nexustradinglabs.com/share/record unfurls into /og/record.png,
+  // the same counts as this panel). Dated so X never shows an older day's card. Only once the pulse read.
+  const sh=document.getElementById('rec-share');
+  if(sh){const day=new Date().toISOString().slice(0,10);const url='https://og.nexustradinglabs.com/share/record?v='+day;
+    sh.href='https://twitter.com/intent/tweet?text='+encodeURIComponent('The record. Every call graded from public price. Losses stay up.')+'&url='+encodeURIComponent(url);sh.style.display='';}
   setText('rec-people-open',p.open+' open');setText('rec-people-graded',gradedText(p));
   setText('rec-engines-open',p.engines.open+' open');setText('rec-engines-graded',gradedText(p.engines));
   const l=document.getElementById('rec-last');if(!l)return;
