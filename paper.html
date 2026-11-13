@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper mode · Nexus Trading Labs</title>
+  <meta name="description" content="Paper mode runs the whole workflow and the agent on simulated fills. No funds at risk. Paper and live records never mix.">
+  <link rel="canonical" href="https://nexustradinglabs.com/paper">
+  <meta name="theme-color" content="#0a0a0b">
+  <meta property="og:title" content="Paper mode · Nexus Trading Labs">
+  <meta property="og:description" content="Paper mode runs the whole workflow and the agent on simulated fills. No funds at risk. Paper and live records never mix.">
+  <meta property="og:url" content="https://nexustradinglabs.com/paper">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://nexustradinglabs.com/preview.png?v=2026-09-29b">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Paper mode", "description": "Paper mode runs the whole workflow and the agent on simulated fills. No funds at risk. Paper and live records never mix.", "url": "https://nexustradinglabs.com/paper", "publisher": {"@type": "Organization", "name": "Nexus Trading Labs", "url": "https://nexustradinglabs.com"}}</script>
+  <!-- Plain page on purpose: no scripts, no web fonts, no third-party requests. -->
+  <style>
+    :root{--bg:#0a0a0b;--border:#232327;--text:#f4f4f5;--fog:#a1a1aa;--muted:#71717a;--brand:#ededf0}
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;background:var(--bg);color:var(--fog);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+    main{max-width:680px;margin:0 auto;padding:48px 16px 64px}
+    .home{display:inline-block;font:600 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-bottom:40px}
+    .home:hover{color:var(--text)}
+    h1{color:var(--text);font-size:28px;line-height:1.25;margin:0 0 10px;font-weight:700;letter-spacing:-.01em;border-top:3px solid var(--brand);padding-top:20px}
+    .lede{color:var(--text);font-size:17px;margin:0 0 32px}
+    h2{color:var(--text);font-size:15px;margin:32px 0 8px;font-weight:700}
+    p{margin:0 0 14px}
+    ul{margin:0 0 14px;padding-left:20px}
+    li{margin:0 0 6px}
+    strong{color:var(--text);font-weight:600}
+    a{color:var(--text)}
+    code{font:14px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text);word-break:break-all}
+    .cta{display:inline-block;margin-top:8px;padding:10px 18px;border:1px solid var(--border);border-radius:7px;color:var(--text);text-decoration:none;font:600 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em}
+    .cta:hover{border-color:var(--muted)}
+    .more{margin-top:40px;font:13px/1.8 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+    .more a{color:var(--fog)}
+    footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+    footer a{color:var(--muted)}
+  </style>
+</head>
+<body>
+<main>
+  <a class="home" href="/">&larr; Nexus Trading Labs</a>
+
+  <h1>Paper mode</h1>
+
+  <p class="lede">The full workflow and the agent, on simulated fills. No funds at risk.</p>
+
+  <h2>What it is</h2>
+  <ul>
+    <li>Paper trades fill at the live market price. Your stop, target and time limits run the same way they do live.</li>
+    <li>Every new agent starts in paper. Going live is your call, and a separate confirmation.</li>
+    <li>Paper and live records never mix. A paper result never shows up as a live one.</li>
+  </ul>
+
+  <h2>What paper leaves out</h2>
+  <ul>
+    <li>Paper P&amp;L has <strong>no fees and no funding</strong>. It reads better than live would.</li>
+    <li>The app shows an after-costs line next to it: a taker fee on both legs and the funding each position paid.</li>
+  </ul>
+
+  <h2>How a signal earns live money</h2>
+  <ul>
+    <li>A signal that clears its bar gets its own paper agent.</li>
+    <li>It runs 30 paper trades. Each one is listed with its R. No dollar total is shown until the sample is complete.</li>
+    <li>A parity check confirms the agent traded what the grade grades, hour by hour.</li>
+    <li>Only then is a live plan written: size, daily cap, kill rule. A person signs it.</li>
+  </ul>
+  <a class="cta" href="https://trade.nexustradinglabs.com/proof/paper/level_reclaim">The current paper run &rarr;</a>
+
+  <p class="more">More: <a href="/grading">How grading works</a> · <a href="/agent-safety">Agent safety</a></p>
+  <footer>
+    Nexus Trading Labs LLC · <a href="https://trade.nexustradinglabs.com">trade.nexustradinglabs.com</a> · <a href="/privacy">Privacy</a>
+  </footer>
+</main>
+</body>
+</html>
