@@ -7,3 +7,9 @@
   Cache-Control: no-cache
 /privacy
   Cache-Control: no-cache
+/grading
+  Cache-Control: no-cache
+/paper
+  Cache-Control: no-cache
+/agent-safety
+  Cache-Control: no-cache

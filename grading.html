@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How grading works · Nexus Trading Labs</title>
+  <meta name="description" content="Every call and every signal on Nexus is graded from public price. First touch of target or stop. Nothing self-reported. Losses stay up.">
+  <link rel="canonical" href="https://nexustradinglabs.com/grading">
+  <meta name="theme-color" content="#0a0a0b">
+  <meta property="og:title" content="How grading works · Nexus Trading Labs">
+  <meta property="og:description" content="Every call and every signal on Nexus is graded from public price. First touch of target or stop. Nothing self-reported. Losses stay up.">
+  <meta property="og:url" content="https://nexustradinglabs.com/grading">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://nexustradinglabs.com/preview.png?v=2026-09-29b">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How grading works", "description": "Every call and every signal on Nexus is graded from public price. First touch of target or stop. Nothing self-reported. Losses stay up.", "url": "https://nexustradinglabs.com/grading", "publisher": {"@type": "Organization", "name": "Nexus Trading Labs", "url": "https://nexustradinglabs.com"}}</script>
+  <!-- Plain page on purpose: no scripts, no web fonts, no third-party requests. -->
+  <style>
+    :root{--bg:#0a0a0b;--border:#232327;--text:#f4f4f5;--fog:#a1a1aa;--muted:#71717a;--brand:#ededf0}
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;background:var(--bg);color:var(--fog);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+    main{max-width:680px;margin:0 auto;padding:48px 16px 64px}
+    .home{display:inline-block;font:600 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-bottom:40px}
+    .home:hover{color:var(--text)}
+    h1{color:var(--text);font-size:28px;line-height:1.25;margin:0 0 10px;font-weight:700;letter-spacing:-.01em;border-top:3px solid var(--brand);padding-top:20px}
+    .lede{color:var(--text);font-size:17px;margin:0 0 32px}
+    h2{color:var(--text);font-size:15px;margin:32px 0 8px;font-weight:700}
+    p{margin:0 0 14px}
+    ul{margin:0 0 14px;padding-left:20px}
+    li{margin:0 0 6px}
+    strong{color:var(--text);font-weight:600}
+    a{color:var(--text)}
+    code{font:14px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text);word-break:break-all}
+    .cta{display:inline-block;margin-top:8px;padding:10px 18px;border:1px solid var(--border);border-radius:7px;color:var(--text);text-decoration:none;font:600 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em}
+    .cta:hover{border-color:var(--muted)}
+    .more{margin-top:40px;font:13px/1.8 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+    .more a{color:var(--fog)}
+    footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--border);font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+    footer a{color:var(--muted)}
+  </style>
+</head>
+<body>
+<main>
+  <a class="home" href="/">&larr; Nexus Trading Labs</a>
+
+  <h1>How grading works</h1>
+
+  <p class="lede">Every call and every signal is graded from public price. Nothing is self-reported. Losses stay up.</p>
+
+  <h2>A trader’s call</h2>
+  <ul>
+    <li>A call is an entry, a stop and a target, published to the feed. Once published it is permanent: the levels can’t be edited and the call can’t be deleted.</li>
+    <li>It is graded on public Orderly candles. Calls published from November 13, 2026 are graded on 1-minute candles. Earlier calls, on 1-hour candles.</li>
+    <li><strong>The entry must trade.</strong> An entry within 0.3% of the market price at publish fills at once. Any other entry fills only when price reaches it. A call that never fills is never graded.</li>
+    <li><strong>First touch decides.</strong> Target first = a win, paid in R from the posted levels. Stop first = −1R. Both in the same candle = a loss.</li>
+    <li>A stop or target on the wrong side of the entry = not graded.</li>
+    <li>The caller board lists only callers with 5+ graded calls and a net-positive record in R.</li>
+  </ul>
+
+  <h2>Our own signals</h2>
+  <ul>
+    <li>Each signal is registered with its rule and a date before it is judged. Only events after that date count. A changed rule is a new signal, registered again.</li>
+    <li>Each event is graded in R on one fixed contract: stop at 1.2× the coin’s 4-hour ATR, target at 1.5× the stop, closed after 168 hours if neither is hit.</li>
+    <li>Every signal is tested against random entries on the same market, side and window, and on coins it was never picked on.</li>
+  </ul>
+  <p>The stages, in order:</p>
+  <ul>
+    <li><strong>Testing</strong>: under 30 new events, or no positive mean R yet.</li>
+    <li><strong>Lead</strong>: 30+ new events, mean R above 0, both halves agree.</li>
+    <li><strong>Edge</strong>: beats 95% of random entries and repeats on the holdout coins.</li>
+    <li><strong>Tradeable</strong>: its exit nets above 0 after fees over 30+ new trades.</li>
+    <li><strong>Paper</strong>: a paper agent trades it. 30 paper trades, judged after fees, before any live plan.</li>
+    <li><strong>Retired</strong>: 100+ events with mean R at or below 0, or worse than random. It stays on the record.</li>
+  </ul>
+
+  <h2>Check it yourself</h2>
+  <ul>
+    <li>Every call page can re-run its own grade from the same public candles.</li>
+    <li>The record is hashed and anchored on Arbitrum, contract <code>0x57a698df84a44F3dA3dac3E08CA455a55A4eff84</code>.</li>
+  </ul>
+  <a class="cta" href="https://trade.nexustradinglabs.com/proof">See the record &rarr;</a>
+
+  <p class="more">More: <a href="/paper">Paper mode</a> · <a href="/agent-safety">Agent safety</a></p>
+  <footer>
+    Nexus Trading Labs LLC · <a href="https://trade.nexustradinglabs.com">trade.nexustradinglabs.com</a> · <a href="/privacy">Privacy</a>
+  </footer>
+</main>
+</body>
+</html>

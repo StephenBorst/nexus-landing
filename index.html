@@ -190,6 +190,7 @@
     .faq-a{font-family:var(--sans);font-size:13px;line-height:1.7;color:var(--fog)}
     .faq-a a{color:var(--accent);text-decoration:none}
     .faq-a a:hover{color:#fff}
+    .faq-a a.faq-more{white-space:nowrap}
     @media(max-width:900px){
       .faq-item{padding:20px 20px}
       nav{padding:0 20px}
@@ -222,6 +223,9 @@
     "logo": "https://nexustradinglabs.com/preview.png",
     "description": "An onchain trading terminal. Plan the trade. Run it yourself or hand it to an agent. Graded from public price, anchored on Arbitrum. Non-custodial. Built on Orderly."
   }
+  </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Nexus Trading Labs?", "acceptedAnswer": {"@type": "Answer", "text": "An on-chain trading terminal built on Orderly Network. Read the market. Size the trade in The Nexus Thesis Engine. Run it yourself or hand it to an agent. Every call is graded from public price."}}, {"@type": "Question", "name": "Do you ever hold my funds or keys?", "acceptedAnswer": {"@type": "Answer", "text": "Never. You trade from your own wallet. Settlement runs on Orderly’s on-chain infrastructure. An agent gets an order-only key. It can trade. It can never withdraw."}}, {"@type": "Question", "name": "Do I need an account or KYC?", "acceptedAnswer": {"@type": "Answer", "text": "No. Connect a wallet. No sign-up. No KYC. The feed, the leaderboards and Wallet X-Ray are open before you connect."}}, {"@type": "Question", "name": "What does “graded from public price” mean?", "acceptedAnswer": {"@type": "Answer", "text": "Every thesis and agent trade is scored from public price. First touch of target vs stop. Nothing self-reported. The ledger is hashed and anchored on Arbitrum. Anyone can recompute it."}}, {"@type": "Question", "name": "Can I try it without risking money?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Paper mode runs the full workflow and the agent on simulated fills. No funds at risk. Go live when you decide."}}, {"@type": "Question", "name": "Is the autonomous agent safe to run?", "acceptedAnswer": {"@type": "Answer", "text": "It trades your rules inside hard limits. A daily-loss cap. A max trades per day. A one-tap kill. Its key is order-only. Pause or stop it anytime. Start in paper."}}, {"@type": "Question", "name": "What is $NEXUS?", "acceptedAnswer": {"@type": "Answer", "text": "A community token on Base. It pays for Nexus data and PRO. Holding it unlocks access. No yield. No revenue share. No dividends. PRO is a software subscription. $NEXUS is not an investment."}}]}
   </script>
 </head>
 <body>
@@ -456,15 +460,15 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">What does &ldquo;graded from public price&rdquo; mean?</div>
-        <p class="faq-a">Every thesis and agent trade is scored from public price. First touch of target vs stop. Nothing self-reported. The ledger is hashed and anchored on Arbitrum. Anyone can recompute it.</p>
+        <p class="faq-a">Every thesis and agent trade is scored from public price. First touch of target vs stop. Nothing self-reported. The ledger is hashed and anchored on Arbitrum. Anyone can recompute it. <a class="faq-more" href="/grading">How grading works &rarr;</a></p>
       </div>
       <div class="faq-item">
         <div class="faq-q">Can I try it without risking money?</div>
-        <p class="faq-a">Yes. Paper mode runs the full workflow and the agent on simulated fills. No funds at risk. Go live when you decide.</p>
+        <p class="faq-a">Yes. Paper mode runs the full workflow and the agent on simulated fills. No funds at risk. Go live when you decide. <a class="faq-more" href="/paper">Paper mode &rarr;</a></p>
       </div>
       <div class="faq-item">
         <div class="faq-q">Is the autonomous agent safe to run?</div>
-        <p class="faq-a">It trades your rules inside hard limits. A daily-loss cap. A max trades per day. A one-tap kill. Its key is order-only. Pause or stop it anytime. Start in paper.</p>
+        <p class="faq-a">It trades your rules inside hard limits. A daily-loss cap. A max trades per day. A one-tap kill. Its key is order-only. Pause or stop it anytime. Start in paper. <a class="faq-more" href="/agent-safety">Agent safety &rarr;</a></p>
       </div>
       <div class="faq-item">
         <div class="faq-q">What is $NEXUS?</div>
@@ -505,6 +509,9 @@
       <ul>
         <li><a href="https://orderly.network/docs" target="_blank" rel="noopener">Docs &#8599;</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="/grading">How grading works</a></li>
+        <li><a href="/paper">Paper mode</a></li>
+        <li><a href="/agent-safety">Agent safety</a></li>
         <li><a href="https://arbiscan.io/address/0x57a698df84a44F3dA3dac3E08CA455a55A4eff84" target="_blank" rel="noopener">Verify Ledger &#8599;</a></li>
       </ul>
     </div>
