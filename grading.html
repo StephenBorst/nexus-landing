@@ -73,6 +73,9 @@
     <li><strong>Paper</strong>: a paper agent trades it. 30 paper trades, judged after fees, before any live plan.</li>
     <li><strong>Retired</strong>: 100+ events with mean R at or below 0, or worse than random. It stays on the record.</li>
   </ul>
+  <p>A signal can also fall back a stage. When it does, its paper agent keeps running, but nothing a higher stage allows is
+  applied: no live plan can be signed. It moves up again only after it holds the lost stage on two daily reads at least
+  7 days apart, with 15 new events since it fell.</p>
 
   <h2>Check it yourself</h2>
   <ul>
